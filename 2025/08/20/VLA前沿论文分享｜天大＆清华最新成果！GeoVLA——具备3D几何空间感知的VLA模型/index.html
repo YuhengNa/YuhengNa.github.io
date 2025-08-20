@@ -26,16 +26,16 @@
 <meta property="og:site_name" content="Yuheng&#39;s Blog">
 <meta property="og:description" content="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型⼀、前⾔：2D VLA 的限制与 3D VLA 的潜⼒• 论⽂链接：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2508.09071• 项⽬链接：https:&#x2F;&#x2F;linsun449.github.io&#x2F;GeoVLA&#x2F;      近年来，**VLA模型**逐渐成为机器⼈领域的研究热点。其⽬标是让机器⼈能够“看懂”">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://yuhengna.github.io/geo1.png">
+<meta property="og:image" content="https://yuhengna.github.io/images/geo1.png">
 <meta property="article:published_time" content="2025-08-20T09:26:58.000Z">
-<meta property="article:modified_time" content="2025-08-20T10:30:39.533Z">
+<meta property="article:modified_time" content="2025-08-20T10:40:55.791Z">
 <meta property="article:author" content="Yuheng Na">
 <meta property="article:tag" content="embodied AI">
 <meta property="article:tag" content="technology blog">
 <meta property="article:tag" content="robotics">
 <meta property="article:tag" content="personal growth">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yuhengna.github.io/geo1.png">
+<meta name="twitter:image" content="https://yuhengna.github.io/images/geo1.png">
   
   
   
@@ -281,24 +281,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型"><a href="#VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型" class="headerlink" title="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型"></a><strong>VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型</strong></h1><h2 id="⼀、前⾔：2D-VLA-的限制与-3D-VLA-的潜⼒"><a href="#⼀、前⾔：2D-VLA-的限制与-3D-VLA-的潜⼒" class="headerlink" title="⼀、前⾔：2D VLA 的限制与 3D VLA 的潜⼒"></a><strong>⼀、前⾔：2D VLA 的限制与 3D VLA 的潜⼒</strong></h2><p>• 论⽂链接：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2508.09071">https://arxiv.org/pdf/2508.09071</a><br>• 项⽬链接：<a target="_blank" rel="noopener" href="https://linsun449.github.io/GeoVLA/">https://linsun449.github.io/GeoVLA/</a><br><img src="/geo1.png" srcset="/img/loading.gif" lazyload></p>
+                <h1 id="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型"><a href="#VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型" class="headerlink" title="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型"></a><strong>VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型</strong></h1><h2 id="⼀、前⾔：2D-VLA-的限制与-3D-VLA-的潜⼒"><a href="#⼀、前⾔：2D-VLA-的限制与-3D-VLA-的潜⼒" class="headerlink" title="⼀、前⾔：2D VLA 的限制与 3D VLA 的潜⼒"></a><strong>⼀、前⾔：2D VLA 的限制与 3D VLA 的潜⼒</strong></h2><p>• 论⽂链接：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2508.09071">https://arxiv.org/pdf/2508.09071</a><br>• 项⽬链接：<a target="_blank" rel="noopener" href="https://linsun449.github.io/GeoVLA/">https://linsun449.github.io/GeoVLA/</a><br><img src="/images/geo1.png" srcset="/img/loading.gif" lazyload alt="GeoVLA 图"></p>
 <p style="text-indent:2em;">
-    近年来，**VLA模型**逐渐成为机器⼈领域的研究热点。其⽬标是让机器⼈能够“看懂”视觉信
-息、“理解”⾃然语⾔指令，并进⼀步“执⾏”相应动作。这类⽅法的典型代表包括 RT-2、
-OpenVLA、pi0、CogACT 等，它们通常建⽴在VLM基础上，通过额外的动作⽣成头(action head)实现
-从指令到动作的映射。然⽽，现有主流 VLA **⾼度依赖 2D RGB 输⼊**，⽽忽略了物理世界中丰富的 **3D**
-**⼏何先验**。这种限制带来了⼏个核⼼问题：
+    近年来，**VLA模型**逐渐成为机器⼈领域的研究热点。其⽬标是让机器⼈能够“看懂”视觉信息、“理解”⾃然语⾔指令，并进⼀步“执⾏”相应动作。这类⽅法的典型代表包括 RT-2、OpenVLA、pi0、CogACT 等，它们通常建⽴在VLM基础上，通过额外的动作⽣成头(action head)实现从指令到动作的映射。然⽽，现有主流 VLA **⾼度依赖 2D RGB 输⼊**，⽽忽略了物理世界中丰富的 **3D⼏何先验**。这种限制带来了⼏个核⼼问题：
 • **深度模糊**：仅依赖 2D 图像时，机器⼈难以准确判断⽬标与⾃⾝的相对空间位置。
 • **尺度不变性差**：同样的指令，在不同⼤⼩物体前可能执⾏失败。
 • **视⻆敏感**：当相机位置变化时，2D-only VLA 很容易丧失泛化能⼒。
-    已有⼀些⼯作尝试在 VLM 端注⼊ 3D 表征，例如 SpatialVLA（引⼊空间位置编码）、LLaVA-3D
-（为⼤模型加⼊ 3D 感知通道）。但这些⽅法往往破坏了视觉编码器与语⾔模型的对⻬，导致需要庞⼤
-的 3D instruction-tuning 数据集来恢复性能，代价⾼昂。另⼀些⽅法选择在 动作专家 (action
-expert) 部分引⼊ 3D 信息，例如 PointVLA 利⽤ ControlNet ⻛格模块将点云特征注⼊，但由于冻结
-了动作专家，导致模型难以充分适应新的 3D 模态。
-    **⽽GeoVLA 的提出，正是为了解决这个⽭盾⸺如何在保持 VLM 知识对⻬的同时，有效地将 3D
-信息融⼊动作⽣成过程**？
-    接下来，本⽂将带你精读GeoVLA⽂献，解析⼯作原理与技术细节！
+</p>
+<p style="text-indent:2em;">
+    已有⼀些⼯作尝试在 VLM 端注⼊ 3D 表征，例如 SpatialVLA（引⼊空间位置编码）、LLaVA-3D（为⼤模型加⼊ 3D 感知通道）。但这些⽅法往往破坏了视觉编码器与语⾔模型的对⻬，导致需要庞⼤的 3D instruction-tuning 数据集来恢复性能，代价⾼昂。另⼀些⽅法选择在 动作专家 (action expert) 部分引⼊ 3D 信息，例如 PointVLA 利⽤ ControlNet ⻛格模块将点云特征注⼊，但由于冻结了动作专家，导致模型难以充分适应新的 3D 模态。
+</p>
+<p style="text-indent:2em;">
+    **⽽GeoVLA 的提出，正是为了解决这个⽭盾⸺如何在保持 VLM 知识对⻬的同时，有效地将 3D 信息融⼊动作⽣成过程**？  接下来，本⽂将带你精读GeoVLA⽂献，解析⼯作原理与技术细节！
 </p>
 
                 
