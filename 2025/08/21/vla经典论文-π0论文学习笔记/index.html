@@ -19,27 +19,39 @@
   <meta name="author" content="Yuheng Na">
   <meta name="keywords" content="embodied AI,technology blog,robotics,personal growth">
   
-    <meta name="description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![ ](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解">
+    <meta name="description" content="VLA经典论文分享｜《π0: A Vision-Language-Action Flow Model for General Robot Control》⭐论文链接：https:&#x2F;&#x2F;www.physicalintelligence.company&#x2F;download&#x2F;pi0.pdf⭐项目主页：Our First Generalist Policy（相关链接）清华大学RDT：[2410.07864]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VLA（视觉语言动作模型）入门学习路线(第一阶段)">
-<meta property="og:url" content="https://yuhengna.github.io/2025/08/21/VLA%EF%BC%88%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B%EF%BC%89%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html">
+<meta property="og:title" content="vla经典论文|π0论文学习笔记">
+<meta property="og:url" content="https://yuhengna.github.io/2025/08/21/vla%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87-%CF%800%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Yuheng&#39;s Blog">
-<meta property="og:description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![ ](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解">
+<meta property="og:description" content="VLA经典论文分享｜《π0: A Vision-Language-Action Flow Model for General Robot Control》⭐论文链接：https:&#x2F;&#x2F;www.physicalintelligence.company&#x2F;download&#x2F;pi0.pdf⭐项目主页：Our First Generalist Policy（相关链接）清华大学RDT：[2410.07864]">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-08-21T01:05:30.000Z">
-<meta property="article:modified_time" content="2025-08-21T01:34:43.303Z">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_01.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_02.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_03.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_04.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_05.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_06.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_07.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_08.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_09.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_10.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_11.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_12.jpg">
+<meta property="article:published_time" content="2025-08-21T05:03:41.000Z">
+<meta property="article:modified_time" content="2025-08-21T05:13:20.030Z">
 <meta property="article:author" content="Yuheng Na">
 <meta property="article:tag" content="VLA(视觉语言动作)">
 <meta property="article:tag" content="具身智能">
 <meta property="article:tag" content="多模态大模型">
 <meta property="article:tag" content="VLM(视觉语言动作模型)">
-<meta property="article:tag" content="学习路线">
-<meta property="article:tag" content="入门笔记">
+<meta property="article:tag" content="论文笔记">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yuhengna.github.io/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_01.jpg">
   
   
   
-  <title>VLA（视觉语言动作模型）入门学习路线(第一阶段) - Yuheng&#39;s Blog</title>
+  <title>vla经典论文|π0论文学习笔记 - Yuheng&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="VLA（视觉语言动作模型）入门学习路线(第一阶段)"></span>
+            <span id="subtitle" data-typed-text="vla经典论文|π0论文学习笔记"></span>
           
         </div>
 
@@ -216,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-21 09:05" pubdate>
-          August 21, 2025 am
+        <time datetime="2025-08-21 13:03" pubdate>
+          August 21, 2025 pm
         </time>
       </span>
     
@@ -228,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          128 words
         
       </span>
     
@@ -239,7 +251,7 @@
         
         
         
-          9 mins
+          2 mins
         
       </span>
     
@@ -276,80 +288,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">VLA（视觉语言动作模型）入门学习路线(第一阶段)</h1>
+            <h1 id="seo-header">vla经典论文|π0论文学习笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="具身智能-VLA（视觉语言动作模型）入门笔记"><a href="#具身智能-VLA（视觉语言动作模型）入门笔记" class="headerlink" title="具身智能|VLA（视觉语言动作模型）入门笔记"></a>具身智能|VLA（视觉语言动作模型）入门笔记</h1><h2 id="前言：关于Vision-Language-Action-Model"><a href="#前言：关于Vision-Language-Action-Model" class="headerlink" title="前言：关于Vision-Language-Action Model"></a>前言：关于Vision-Language-Action Model</h2><h3 id="入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》"><a href="#入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》" class="headerlink" title="入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》"></a>入门必读：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2405.14093">《A Survey on Vision-Language-Action Models for Embodied AI》</a></h3><p>![ ](&#x2F;images&#x2F;vla survey.png)</p>
-<p>Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与动作生成三大模块，实现了从自然语言指令到具体动作序列的端到端映射。在<strong>视觉模块</strong>中，预训练编码器（如 CLIP、DINOv2 或基于自监督的 MAE）负责提取环境中物体与场景的语义特征，而世界模型（如 Dreamer 系列）则进一步构建环境动态的内部表征，使得智能体能够在“想象–计划–执行”闭环中进行高效推理。<strong>语言模块</strong>通常依托大规模预训练语言模型（例如 PaLM‑E、EmbodiedGPT），通过链式思维或任务分解策略，将复杂指令细化为可执行的子任务。<strong>动作模块</strong>则采用从强化学习（PPO、DQN）到决策 Transformer（Decision Transformer、Gato）甚至扩散策略（Diffusion Policy）的多样化方法，以兼顾动作的精度与多样性。<br>尽管 VLA 模型在仿真环境下已展现出较为优秀的性能，但在真实场景中，<strong>数据稀缺与模型部署</strong>带来的效率与安全挑战依然突出。未来研究仍需探索自监督与仿真‑现实域自适应技术，以提升模型在多变环境中的泛化能力；同时，通过模型剪枝、早停推理或部分激活策略（如 TinyVLA 系列）来兼顾实时响应与资源受限设备的部署需求。此外，将<strong>安全约束与可解释机制</strong>融入动作生成流程，可为具身智能体的实际应用提供更可靠的保障。只有在理论创新与工程实践的双重驱动下，VLA 模型方能从“入门”迈向真正的“精通”与大规模应用。</p>
-<h2 id="第一阶段：仿真环境安装与模仿学习流程"><a href="#第一阶段：仿真环境安装与模仿学习流程" class="headerlink" title="第一阶段：仿真环境安装与模仿学习流程"></a>第一阶段：仿真环境安装与模仿学习流程</h2><h3 id="🎯阶段目标"><a href="#🎯阶段目标" class="headerlink" title="🎯阶段目标"></a>🎯阶段目标</h3><p>完成以下三大核心工具的环境搭建与初步使用：</p>
-<ul>
-<li>Pytorch：深度学习框架</li>
-<li>Isaac Lab：用于任务定义和训练的框架</li>
-<li>RoboMimic：模仿学习库，支持行为克隆（BC）等策略</li>
-</ul>
-<h3 id="步骤一：Python-PyTorch-环境准备"><a href="#步骤一：Python-PyTorch-环境准备" class="headerlink" title="步骤一：Python + PyTorch 环境准备"></a>步骤一：Python + PyTorch 环境准备</h3><p><strong>🔧学习目标</strong></p>
-<ul>
-<li>掌握虚拟环境管理（以 Conda 为例）</li>
-<li>成功安装 PyTorch 并具备 GPU 加速能力</li>
-</ul>
-<p><strong>🔧安装流程</strong><br>conda create -n robosim python&#x3D;3.10<br>conda activate robosim<br>pip install torch&#x3D;&#x3D;2.1.2+cu118 torchvision torchaudio –index-url <a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/cu118">https://download.pytorch.org/whl/cu118</a></p>
-<p><strong>✅ 验证安装：</strong><br>import torch<br>print(torch.cuda.is_available())  # 应返回 True</p>
-<p><strong>🔧推荐中文资源</strong><br>-<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wW411Y7ai?vd_source=95e18851d44f6a376e6cead040100a2b">Python3基础教程|莫烦</a><br>-<a target="_blank" rel="noopener" href="https://pytorch.apachecn.org/">Pytorch中文网</a><br>-<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411t7RN?vd_source=95e18851d44f6a376e6cead040100a2b">B站小土堆|PyTorch深度学习快速入门教程</a></p>
-<h3 id="步骤二：安装-Isaac-Lab（任务训练框架）"><a href="#步骤二：安装-Isaac-Lab（任务训练框架）" class="headerlink" title="步骤二：安装 Isaac Lab（任务训练框架）"></a>步骤二：安装 Isaac Lab（任务训练框架）</h3><p><strong>🔧学习目标：</strong></p>
-<ul>
-<li>克隆并成功运行 Isaac Lab 示例脚本</li>
-<li>掌握仿真环境的创建与遥操作演示</li>
-</ul>
-<p><strong>🔧安装步骤</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wbURYWEod?vd_source=95e18851d44f6a376e6cead040100a2b">Isaac Lab保姆级安装教程</a></li>
-</ul>
-<p>git clone <a target="_blank" rel="noopener" href="https://github.com/NVIDIA-Omniverse/IsaacLab.git">https://github.com/NVIDIA-Omniverse/IsaacLab.git</a><br>cd IsaacLab<br>.&#x2F;isaaclab.sh –install</p>
-<p><strong>✅ 示例运行验证</strong><br>.&#x2F;isaaclab.sh -p source&#x2F;standalone&#x2F;create_empty.py</p>
-<p><strong>🔧示例任务（键盘遥操作）</strong><br>.&#x2F;isaaclab.sh -p scripts&#x2F;environments&#x2F;teleoperation&#x2F;teleop_se3_agent.py <br>  –task Isaac-Lift-Cube-Franka-IK-Rel-v0 <br>  –teleop_device keyboard –num_envs 1</p>
-<p><strong>🔧推荐中文资源</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Clam_dw/article/details/145447273">Calm_dw 的 Isaac Lab 教程（CSDN）</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.robotsfan.com/isaaclab/">Isaac Lab 中文文档（社区翻译版</a></li>
-</ul>
-<h3 id="步骤三：安装与使用-RoboMimic（模仿学习）"><a href="#步骤三：安装与使用-RoboMimic（模仿学习）" class="headerlink" title="步骤三：安装与使用 RoboMimic（模仿学习）"></a>步骤三：安装与使用 RoboMimic（模仿学习）</h3><p><strong>🔧学习目标</strong></p>
-<ul>
-<li>了解 RoboMimic 支持的策略（BC&#x2F;BC-RNN等）</li>
-<li>成功运行一个 BC 模型训练流程</li>
-</ul>
-<p><strong>🔧安装步骤</strong><br>git clone <a target="_blank" rel="noopener" href="https://github.com/ARISE-Initiative/robomimic.git">https://github.com/ARISE-Initiative/robomimic.git</a><br>cd robomimic<br>pip install -e .</p>
-<p><strong>🏗️ 启动训练示例</strong><br>python train.py –config exps&#x2F;templates&#x2F;bc.json –dataset datasets&#x2F;dataset.hdf5</p>
-<p>训练模型和日志输出会保存在 output&#x2F; 目录下。</p>
-<p><strong>🔧推荐资源</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28912651/article/details/142265735">CSDN 系列博客：《RoboMimic 基础教程》《RoboMimic 应用实战》</a></li>
-</ul>
-<h3 id="进阶推荐（模仿学习）"><a href="#进阶推荐（模仿学习）" class="headerlink" title="进阶推荐（模仿学习）"></a>进阶推荐（模仿学习）</h3><p>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xGF3eeEjB?vd_source=95e18851d44f6a376e6cead040100a2b">ACT&#x2F;ALOHA原理精析</a></p>
-<p>🔧 ACT</p>
-<ul>
-<li>GitHub：github.com&#x2F;tonyzhaozh&#x2F;act</li>
-</ul>
-<p>🔧ALOHA </p>
-<ul>
-<li>项目主页：tonyzhaozh.github.io&#x2F;aloha</li>
-<li>GitHub：github.com&#x2F;tonyzhaozh&#x2F;aloha<br><em>ALOHA 是一个低成本双臂机器人系统，ACT 是其搭配的动作分块模仿学习策略，支持长时序任务执行。</em></li>
-</ul>
-<h3 id="🧩进阶推荐（Diffusion）"><a href="#🧩进阶推荐（Diffusion）" class="headerlink" title="🧩进阶推荐（Diffusion）"></a>🧩进阶推荐（Diffusion）</h3><ol>
-<li>Diffusion Policy</li>
-</ol>
-<ul>
-<li>📘 GitHub：github.com&#x2F;real-stanford&#x2F;diffusion_policy</li>
-<li>📄 论文：arxiv.org&#x2F;abs&#x2F;2303.04137<br><em>哥伦比亚大学与丰田研究院提出，适合高维动作控制任务的扩散策略方法。</em></li>
-</ul>
-<ol start="2">
-<li>3D Diffusion Policy (DP3)</li>
-</ol>
-<ul>
-<li>📘 GitHub：github.com&#x2F;YanjieZe&#x2F;3D-Diffusion-Policy</li>
-<li>🌐 项目主页：dp3.cs.columbia.edu<br><em>DP3 将 3D 视觉与扩散策略结合，提升了三维任务中的泛化与控制能力。</em></li>
-</ul>
+                <h1 id="VLA经典论文分享｜《π0-A-Vision-Language-Action-Flow-Model-for-General-Robot-Control》"><a href="#VLA经典论文分享｜《π0-A-Vision-Language-Action-Flow-Model-for-General-Robot-Control》" class="headerlink" title="VLA经典论文分享｜《π0: A Vision-Language-Action Flow Model for General Robot Control》"></a>VLA经典论文分享｜《π0: A Vision-Language-Action Flow Model for General Robot Control》</h1><p>⭐论文链接：<a target="_blank" rel="noopener" href="https://www.physicalintelligence.company/download/pi0.pdf">https://www.physicalintelligence.company/download/pi0.pdf</a><br>⭐项目主页：<a target="_blank" rel="noopener" href="https://www.physicalintelligence.company/blog/pi0">Our First Generalist Policy</a><br>（相关链接）清华大学RDT：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2410.07864">[2410.07864] RDT-1B: a Diffusion Foundation Model …</a></p>
+<p>Physical Intelligence 公司推出的 π0模型，代表了通用机器人基础模型领域的一项重要进展。该模型旨在通过结合大规模预训练和创新的网络架构，赋予机器人处理复杂物理任务的能力，向着物理世界的通用智能迈出了坚实的一步。</p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_01.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_02.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_03.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_04.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_05.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_06.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_07.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_08.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_09.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_10.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_11.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_12.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
 
                 
               </div>
@@ -368,7 +325,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">入门笔记</a>
+  <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="category-chain-item">论文笔记</a>
   
   
 
@@ -391,9 +348,7 @@
       
         <a href="/tags/VLM-%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B/" class="print-no-link">#VLM(视觉语言动作模型)</a>
       
-        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="print-no-link">#学习路线</a>
-      
-        <a href="/tags/%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" class="print-no-link">#入门笔记</a>
+        <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="print-no-link">#论文笔记</a>
       
     </div>
   
@@ -405,8 +360,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>VLA（视觉语言动作模型）入门学习路线(第一阶段)</div>
-      <div>https://yuhengna.github.io/2025/08/21/VLA（视觉语言动作模型）入门学习路线/</div>
+      <div>vla经典论文|π0论文学习笔记</div>
+      <div>https://yuhengna.github.io/2025/08/21/vla经典论文-π0论文学习笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -450,18 +405,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/21/vla%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87-%CF%800%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="vla经典论文|π0论文学习笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vla经典论文|π0论文学习笔记</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/20/VLA%E5%89%8D%E6%B2%BF%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%EF%BD%9C%E5%A4%A9%E5%A4%A7%EF%BC%86%E6%B8%85%E5%8D%8E%E6%9C%80%E6%96%B0%E6%88%90%E6%9E%9C%EF%BC%81GeoVLA%E2%80%94%E2%80%94%E5%85%B7%E5%A4%873D%E5%87%A0%E4%BD%95%E7%A9%BA%E9%97%B4%E6%84%9F%E7%9F%A5%E7%9A%84VLA%E6%A8%A1%E5%9E%8B/" title="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型">
-                        <span class="hidden-mobile">VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型</span>
+                      <a href="/2025/08/21/VLA%EF%BC%88%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B%EF%BC%89%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" title="VLA（视觉语言动作模型）入门学习路线(第一阶段)">
+                        <span class="hidden-mobile">VLA（视觉语言动作模型）入门学习路线(第一阶段)</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
