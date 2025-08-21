@@ -19,15 +19,15 @@
   <meta name="author" content="Yuheng Na">
   <meta name="keywords" content="embodied AI,technology blog,robotics,personal growth">
   
-    <meta name="description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与">
+    <meta name="description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![ ](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VLA（视觉语言动作模型）入门学习路线(第一阶段)">
 <meta property="og:url" content="https://yuhengna.github.io/2025/08/21/VLA%EF%BC%88%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B%EF%BC%89%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html">
 <meta property="og:site_name" content="Yuheng&#39;s Blog">
-<meta property="og:description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与">
+<meta property="og:description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![ ](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-08-21T01:05:30.000Z">
-<meta property="article:modified_time" content="2025-08-21T01:26:38.926Z">
+<meta property="article:modified_time" content="2025-08-21T01:34:43.303Z">
 <meta property="article:author" content="Yuheng Na">
 <meta property="article:tag" content="VLA(视觉语言动作)">
 <meta property="article:tag" content="具身智能">
@@ -281,7 +281,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="具身智能-VLA（视觉语言动作模型）入门笔记"><a href="#具身智能-VLA（视觉语言动作模型）入门笔记" class="headerlink" title="具身智能|VLA（视觉语言动作模型）入门笔记"></a>具身智能|VLA（视觉语言动作模型）入门笔记</h1><h2 id="前言：关于Vision-Language-Action-Model"><a href="#前言：关于Vision-Language-Action-Model" class="headerlink" title="前言：关于Vision-Language-Action Model"></a>前言：关于Vision-Language-Action Model</h2><h3 id="入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》"><a href="#入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》" class="headerlink" title="入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》"></a>入门必读：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2405.14093">《A Survey on Vision-Language-Action Models for Embodied AI》</a></h3><p>![](&#x2F;images&#x2F;vla survey.png)</p>
+                <h1 id="具身智能-VLA（视觉语言动作模型）入门笔记"><a href="#具身智能-VLA（视觉语言动作模型）入门笔记" class="headerlink" title="具身智能|VLA（视觉语言动作模型）入门笔记"></a>具身智能|VLA（视觉语言动作模型）入门笔记</h1><h2 id="前言：关于Vision-Language-Action-Model"><a href="#前言：关于Vision-Language-Action-Model" class="headerlink" title="前言：关于Vision-Language-Action Model"></a>前言：关于Vision-Language-Action Model</h2><h3 id="入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》"><a href="#入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》" class="headerlink" title="入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》"></a>入门必读：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2405.14093">《A Survey on Vision-Language-Action Models for Embodied AI》</a></h3><p>![ ](&#x2F;images&#x2F;vla survey.png)</p>
 <p>Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与动作生成三大模块，实现了从自然语言指令到具体动作序列的端到端映射。在<strong>视觉模块</strong>中，预训练编码器（如 CLIP、DINOv2 或基于自监督的 MAE）负责提取环境中物体与场景的语义特征，而世界模型（如 Dreamer 系列）则进一步构建环境动态的内部表征，使得智能体能够在“想象–计划–执行”闭环中进行高效推理。<strong>语言模块</strong>通常依托大规模预训练语言模型（例如 PaLM‑E、EmbodiedGPT），通过链式思维或任务分解策略，将复杂指令细化为可执行的子任务。<strong>动作模块</strong>则采用从强化学习（PPO、DQN）到决策 Transformer（Decision Transformer、Gato）甚至扩散策略（Diffusion Policy）的多样化方法，以兼顾动作的精度与多样性。<br>尽管 VLA 模型在仿真环境下已展现出较为优秀的性能，但在真实场景中，<strong>数据稀缺与模型部署</strong>带来的效率与安全挑战依然突出。未来研究仍需探索自监督与仿真‑现实域自适应技术，以提升模型在多变环境中的泛化能力；同时，通过模型剪枝、早停推理或部分激活策略（如 TinyVLA 系列）来兼顾实时响应与资源受限设备的部署需求。此外，将<strong>安全约束与可解释机制</strong>融入动作生成流程，可为具身智能体的实际应用提供更可靠的保障。只有在理论创新与工程实践的双重驱动下，VLA 模型方能从“入门”迈向真正的“精通”与大规模应用。</p>
 <h2 id="第一阶段：仿真环境安装与模仿学习流程"><a href="#第一阶段：仿真环境安装与模仿学习流程" class="headerlink" title="第一阶段：仿真环境安装与模仿学习流程"></a>第一阶段：仿真环境安装与模仿学习流程</h2><h3 id="🎯阶段目标"><a href="#🎯阶段目标" class="headerlink" title="🎯阶段目标"></a>🎯阶段目标</h3><p>完成以下三大核心工具的环境搭建与初步使用：</p>
 <ul>
