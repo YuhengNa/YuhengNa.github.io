@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/nyh_title.png">
+  <link rel="icon" href="/img/nyh_title.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yuheng Na">
+  <meta name="keywords" content="embodied AI,technology blog,robotics,personal growth">
+  
+    <meta name="description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VLA（视觉语言动作模型）入门学习路线(第一阶段)">
+<meta property="og:url" content="https://yuhengna.github.io/2025/08/21/VLA%EF%BC%88%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B%EF%BC%89%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html">
+<meta property="og:site_name" content="Yuheng&#39;s Blog">
+<meta property="og:description" content="具身智能|VLA（视觉语言动作模型）入门笔记前言：关于Vision-Language-Action Model入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》![](&#x2F;images&#x2F;vla survey.png) Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-08-21T01:05:30.000Z">
+<meta property="article:modified_time" content="2025-08-21T01:26:38.926Z">
+<meta property="article:author" content="Yuheng Na">
+<meta property="article:tag" content="VLA(视觉语言动作)">
+<meta property="article:tag" content="具身智能">
+<meta property="article:tag" content="多模态大模型">
+<meta property="article:tag" content="VLM(视觉语言动作模型)">
+<meta property="article:tag" content="学习路线">
+<meta property="article:tag" content="入门笔记">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>VLA（视觉语言动作模型）入门学习路线(第一阶段) - Yuheng&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yuhengna.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yuheng&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/profile/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>profile</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/wall1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="VLA（视觉语言动作模型）入门学习路线(第一阶段)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-21 09:05" pubdate>
+          August 21, 2025 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">VLA（视觉语言动作模型）入门学习路线(第一阶段)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="具身智能-VLA（视觉语言动作模型）入门笔记"><a href="#具身智能-VLA（视觉语言动作模型）入门笔记" class="headerlink" title="具身智能|VLA（视觉语言动作模型）入门笔记"></a>具身智能|VLA（视觉语言动作模型）入门笔记</h1><h2 id="前言：关于Vision-Language-Action-Model"><a href="#前言：关于Vision-Language-Action-Model" class="headerlink" title="前言：关于Vision-Language-Action Model"></a>前言：关于Vision-Language-Action Model</h2><h3 id="入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》"><a href="#入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》" class="headerlink" title="入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》"></a>入门必读：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2405.14093">《A Survey on Vision-Language-Action Models for Embodied AI》</a></h3><p>![](&#x2F;images&#x2F;vla survey.png)</p>
+<p>Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与动作生成三大模块，实现了从自然语言指令到具体动作序列的端到端映射。在<strong>视觉模块</strong>中，预训练编码器（如 CLIP、DINOv2 或基于自监督的 MAE）负责提取环境中物体与场景的语义特征，而世界模型（如 Dreamer 系列）则进一步构建环境动态的内部表征，使得智能体能够在“想象–计划–执行”闭环中进行高效推理。<strong>语言模块</strong>通常依托大规模预训练语言模型（例如 PaLM‑E、EmbodiedGPT），通过链式思维或任务分解策略，将复杂指令细化为可执行的子任务。<strong>动作模块</strong>则采用从强化学习（PPO、DQN）到决策 Transformer（Decision Transformer、Gato）甚至扩散策略（Diffusion Policy）的多样化方法，以兼顾动作的精度与多样性。<br>尽管 VLA 模型在仿真环境下已展现出较为优秀的性能，但在真实场景中，<strong>数据稀缺与模型部署</strong>带来的效率与安全挑战依然突出。未来研究仍需探索自监督与仿真‑现实域自适应技术，以提升模型在多变环境中的泛化能力；同时，通过模型剪枝、早停推理或部分激活策略（如 TinyVLA 系列）来兼顾实时响应与资源受限设备的部署需求。此外，将<strong>安全约束与可解释机制</strong>融入动作生成流程，可为具身智能体的实际应用提供更可靠的保障。只有在理论创新与工程实践的双重驱动下，VLA 模型方能从“入门”迈向真正的“精通”与大规模应用。</p>
+<h2 id="第一阶段：仿真环境安装与模仿学习流程"><a href="#第一阶段：仿真环境安装与模仿学习流程" class="headerlink" title="第一阶段：仿真环境安装与模仿学习流程"></a>第一阶段：仿真环境安装与模仿学习流程</h2><h3 id="🎯阶段目标"><a href="#🎯阶段目标" class="headerlink" title="🎯阶段目标"></a>🎯阶段目标</h3><p>完成以下三大核心工具的环境搭建与初步使用：</p>
+<ul>
+<li>Pytorch：深度学习框架</li>
+<li>Isaac Lab：用于任务定义和训练的框架</li>
+<li>RoboMimic：模仿学习库，支持行为克隆（BC）等策略</li>
+</ul>
+<h3 id="步骤一：Python-PyTorch-环境准备"><a href="#步骤一：Python-PyTorch-环境准备" class="headerlink" title="步骤一：Python + PyTorch 环境准备"></a>步骤一：Python + PyTorch 环境准备</h3><p><strong>🔧学习目标</strong></p>
+<ul>
+<li>掌握虚拟环境管理（以 Conda 为例）</li>
+<li>成功安装 PyTorch 并具备 GPU 加速能力</li>
+</ul>
+<p><strong>🔧安装流程</strong><br>conda create -n robosim python&#x3D;3.10<br>conda activate robosim<br>pip install torch&#x3D;&#x3D;2.1.2+cu118 torchvision torchaudio –index-url <a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/cu118">https://download.pytorch.org/whl/cu118</a></p>
+<p><strong>✅ 验证安装：</strong><br>import torch<br>print(torch.cuda.is_available())  # 应返回 True</p>
+<p><strong>🔧推荐中文资源</strong><br>-<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wW411Y7ai?vd_source=95e18851d44f6a376e6cead040100a2b">Python3基础教程|莫烦</a><br>-<a target="_blank" rel="noopener" href="https://pytorch.apachecn.org/">Pytorch中文网</a><br>-<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411t7RN?vd_source=95e18851d44f6a376e6cead040100a2b">B站小土堆|PyTorch深度学习快速入门教程</a></p>
+<h3 id="步骤二：安装-Isaac-Lab（任务训练框架）"><a href="#步骤二：安装-Isaac-Lab（任务训练框架）" class="headerlink" title="步骤二：安装 Isaac Lab（任务训练框架）"></a>步骤二：安装 Isaac Lab（任务训练框架）</h3><p><strong>🔧学习目标：</strong></p>
+<ul>
+<li>克隆并成功运行 Isaac Lab 示例脚本</li>
+<li>掌握仿真环境的创建与遥操作演示</li>
+</ul>
+<p><strong>🔧安装步骤</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wbURYWEod?vd_source=95e18851d44f6a376e6cead040100a2b">Isaac Lab保姆级安装教程</a></li>
+</ul>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/NVIDIA-Omniverse/IsaacLab.git">https://github.com/NVIDIA-Omniverse/IsaacLab.git</a><br>cd IsaacLab<br>.&#x2F;isaaclab.sh –install</p>
+<p><strong>✅ 示例运行验证</strong><br>.&#x2F;isaaclab.sh -p source&#x2F;standalone&#x2F;create_empty.py</p>
+<p><strong>🔧示例任务（键盘遥操作）</strong><br>.&#x2F;isaaclab.sh -p scripts&#x2F;environments&#x2F;teleoperation&#x2F;teleop_se3_agent.py <br>  –task Isaac-Lift-Cube-Franka-IK-Rel-v0 <br>  –teleop_device keyboard –num_envs 1</p>
+<p><strong>🔧推荐中文资源</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Clam_dw/article/details/145447273">Calm_dw 的 Isaac Lab 教程（CSDN）</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.robotsfan.com/isaaclab/">Isaac Lab 中文文档（社区翻译版</a></li>
+</ul>
+<h3 id="步骤三：安装与使用-RoboMimic（模仿学习）"><a href="#步骤三：安装与使用-RoboMimic（模仿学习）" class="headerlink" title="步骤三：安装与使用 RoboMimic（模仿学习）"></a>步骤三：安装与使用 RoboMimic（模仿学习）</h3><p><strong>🔧学习目标</strong></p>
+<ul>
+<li>了解 RoboMimic 支持的策略（BC&#x2F;BC-RNN等）</li>
+<li>成功运行一个 BC 模型训练流程</li>
+</ul>
+<p><strong>🔧安装步骤</strong><br>git clone <a target="_blank" rel="noopener" href="https://github.com/ARISE-Initiative/robomimic.git">https://github.com/ARISE-Initiative/robomimic.git</a><br>cd robomimic<br>pip install -e .</p>
+<p><strong>🏗️ 启动训练示例</strong><br>python train.py –config exps&#x2F;templates&#x2F;bc.json –dataset datasets&#x2F;dataset.hdf5</p>
+<p>训练模型和日志输出会保存在 output&#x2F; 目录下。</p>
+<p><strong>🔧推荐资源</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28912651/article/details/142265735">CSDN 系列博客：《RoboMimic 基础教程》《RoboMimic 应用实战》</a></li>
+</ul>
+<h3 id="进阶推荐（模仿学习）"><a href="#进阶推荐（模仿学习）" class="headerlink" title="进阶推荐（模仿学习）"></a>进阶推荐（模仿学习）</h3><p>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xGF3eeEjB?vd_source=95e18851d44f6a376e6cead040100a2b">ACT&#x2F;ALOHA原理精析</a></p>
+<p>🔧 ACT</p>
+<ul>
+<li>GitHub：github.com&#x2F;tonyzhaozh&#x2F;act</li>
+</ul>
+<p>🔧ALOHA </p>
+<ul>
+<li>项目主页：tonyzhaozh.github.io&#x2F;aloha</li>
+<li>GitHub：github.com&#x2F;tonyzhaozh&#x2F;aloha<br><em>ALOHA 是一个低成本双臂机器人系统，ACT 是其搭配的动作分块模仿学习策略，支持长时序任务执行。</em></li>
+</ul>
+<h3 id="🧩进阶推荐（Diffusion）"><a href="#🧩进阶推荐（Diffusion）" class="headerlink" title="🧩进阶推荐（Diffusion）"></a>🧩进阶推荐（Diffusion）</h3><ol>
+<li>Diffusion Policy</li>
+</ol>
+<ul>
+<li>📘 GitHub：github.com&#x2F;real-stanford&#x2F;diffusion_policy</li>
+<li>📄 论文：arxiv.org&#x2F;abs&#x2F;2303.04137<br><em>哥伦比亚大学与丰田研究院提出，适合高维动作控制任务的扩散策略方法。</em></li>
+</ul>
+<ol start="2">
+<li>3D Diffusion Policy (DP3)</li>
+</ol>
+<ul>
+<li>📘 GitHub：github.com&#x2F;YanjieZe&#x2F;3D-Diffusion-Policy</li>
+<li>🌐 项目主页：dp3.cs.columbia.edu<br><em>DP3 将 3D 视觉与扩散策略结合，提升了三维任务中的泛化与控制能力。</em></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" class="category-chain-item">入门笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/VLA-%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C/" class="print-no-link">#VLA(视觉语言动作)</a>
+      
+        <a href="/tags/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD/" class="print-no-link">#具身智能</a>
+      
+        <a href="/tags/%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="print-no-link">#多模态大模型</a>
+      
+        <a href="/tags/VLM-%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B/" class="print-no-link">#VLM(视觉语言动作模型)</a>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="print-no-link">#学习路线</a>
+      
+        <a href="/tags/%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" class="print-no-link">#入门笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>VLA（视觉语言动作模型）入门学习路线(第一阶段)</div>
+      <div>https://yuhengna.github.io/2025/08/21/VLA（视觉语言动作模型）入门学习路线/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Yuheng Na</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 21, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/20/VLA%E5%89%8D%E6%B2%BF%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%EF%BD%9C%E5%A4%A9%E5%A4%A7%EF%BC%86%E6%B8%85%E5%8D%8E%E6%9C%80%E6%96%B0%E6%88%90%E6%9E%9C%EF%BC%81GeoVLA%E2%80%94%E2%80%94%E5%85%B7%E5%A4%873D%E5%87%A0%E4%BD%95%E7%A9%BA%E9%97%B4%E6%84%9F%E7%9F%A5%E7%9A%84VLA%E6%A8%A1%E5%9E%8B/" title="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型">
+                        <span class="hidden-mobile">VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div>
+  <span id="timeDate">正在载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("08/17/2020 00:00:00");
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀已持续航行&nbsp"+dnum+"&nbsp天";  
+      document.getElementById("times").innerHTML = hnum + "&nbsp时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+  }
+  setInterval("createtime()",250);
+  </script>
+</div>
+
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
