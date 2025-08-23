@@ -4,6 +4,53 @@
   
   
   <entry>
+    <title>Flow Matching 在具身智能 VLA 模型中的原理与实现（二）</title>
+    <link href="/2025/08/24/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <url>/2025/08/24/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p><strong>💡论文链接：<a href="https://arxiv.org/pdf/2210.02747">https://arxiv.org/pdf/2210.02747</a></strong><br><strong>💡MIT课程链接：<a href="https://diffusion.csail.mit.edu/">Generative AI with Stochastic Differential Equatio…</a></strong><br><br>VLA（Vision–Language–Action）模型的核心任务是把来自视觉与语言的多模态条件信息，系统性地映射为<strong>连贯且可执行的动作或轨迹分布</strong>。要在高维连续动作空间中实现这一映射，既要保证生成过程的可控性与物理连贯性，又希望具备高效采样与可评估的概率性质。Flow matching 提供了一类满足这些要求的技术范式：通过直接参数化随时间变化的<strong>向量场</strong>（velocity field）并训练它去“匹配”将简单基准分布推送到目标数据分布的瞬时流，从而实现从条件到动作的<strong>平滑变换</strong>。</p><p>将 Flow matching 引入具身智能的 VLA 框架，能够在理论上提供一种连贯且可解释的条件生成机制，并在实践上带来较快的确定性采样与较强的条件保持能力。但其实际性能高度依赖于条件融合策略、时间&#x2F;路径设计、数值求解与正则化手段的协同优化。下面的学习笔记，参考了FM论文、其他FM教程和MIT课程内容，并结合个人学习体会，总结而成。因段落内容较长，将分为四部分发布。</p><p><img src="/images/Page_1_docsmall.com1.jpg" alt=" "></p><p><img src="/images/Page_2_docsmall.com1.jpg" alt=" "></p><p><img src="/images/Page_3_docsmall.com1.jpg" alt=" "></p><p><img src="/images/Page_4_docsmall.com1.jpg" alt=" "></p><p><img src="/images/Page_5_docsmall.com1.jpg" alt=" "></p><p><img src="/images/Page_6_docsmall.com1.jpg" alt=" "></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>学习路线</tag>
+      
+      <tag>入门笔记</tag>
+      
+      <tag>flow matching（流匹配）</tag>
+      
+      <tag>入门教程</tag>
+      
+      <tag>学习笔记</tag>
+      
+      <tag>扩散模型</tag>
+      
+      <tag>diffusion</tag>
+      
+      <tag>AIGC</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Flow Matching 在具身智能 VLA 模型中的原理与实现（一）</title>
     <link href="/2025/08/23/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <url>/2025/08/23/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
