@@ -19,35 +19,43 @@
   <meta name="author" content="Yuheng Na">
   <meta name="keywords" content="embodied AI,technology blog,robotics,personal growth">
   
-    <meta name="description" content="SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读🔍项目链接：SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…🔍论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2410.08189🔍李飞飞“空间智能”访谈链接：htt">
+    <meta name="description" content="💡论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2210.02747💡MIT课程链接：Generative AI with Stochastic Differential Equatio…		VLA（Vision–Language–Action）模型的核心任务是把来自视觉与语言的多模态条件信息，系统性地映射为连贯且可执行的动作或轨迹分布。要在高维连续动作空间中实现这一映射，既要保证生成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读">
-<meta property="og:url" content="https://yuhengna.github.io/2025/08/21/VLA%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-%E2%80%94%E2%80%94-%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/index.html">
+<meta property="og:title" content="Flow Matching 在具身智能 VLA 模型中的原理与实现（一）">
+<meta property="og:url" content="https://yuhengna.github.io/2025/08/23/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Yuheng&#39;s Blog">
-<meta property="og:description" content="SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读🔍项目链接：SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…🔍论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2410.08189🔍李飞飞“空间智能”访谈链接：htt">
+<meta property="og:description" content="💡论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2210.02747💡MIT课程链接：Generative AI with Stochastic Differential Equatio…		VLA（Vision–Language–Action）模型的核心任务是把来自视觉与语言的多模态条件信息，系统性地映射为连贯且可执行的动作或轨迹分布。要在高维连续动作空间中实现这一映射，既要保证生成">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-0.jpg">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-1.jpg">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-2.jpg">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-3.jpg">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-4.jpg">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-5.jpg">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-6.jpg">
-<meta property="og:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-7.jpg">
-<meta property="article:published_time" content="2025-08-21T05:43:04.000Z">
-<meta property="article:modified_time" content="2025-08-23T04:14:00.516Z">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_1_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_2_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_3_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_4_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_5_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_6_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_7_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_8_docsmall.com.jpg">
+<meta property="og:image" content="https://yuhengna.github.io/images/Page_9_docsmall.com.jpg">
+<meta property="article:published_time" content="2025-08-23T04:41:22.000Z">
+<meta property="article:modified_time" content="2025-08-23T06:52:53.353Z">
 <meta property="article:author" content="Yuheng Na">
 <meta property="article:tag" content="VLA(视觉语言动作)">
 <meta property="article:tag" content="具身智能">
 <meta property="article:tag" content="多模态大模型">
 <meta property="article:tag" content="VLM(视觉语言动作模型)">
-<meta property="article:tag" content="论文笔记">
+<meta property="article:tag" content="学习路线">
+<meta property="article:tag" content="入门笔记">
+<meta property="article:tag" content="flow matching（流匹配）">
+<meta property="article:tag" content="入门教程">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="扩散模型">
+<meta property="article:tag" content="diffusion">
+<meta property="article:tag" content="AIGC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yuhengna.github.io/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-0.jpg">
+<meta name="twitter:image" content="https://yuhengna.github.io/images/Page_1_docsmall.com.jpg">
   
   
   
-  <title>VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读 - Yuheng&#39;s Blog</title>
+  <title>Flow Matching 在具身智能 VLA 模型中的原理与实现（一） - Yuheng&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +221,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读"></span>
+            <span id="subtitle" data-typed-text="Flow Matching 在具身智能 VLA 模型中的原理与实现（一）"></span>
           
         </div>
 
@@ -224,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-21 13:43" pubdate>
-          August 21, 2025 pm
+        <time datetime="2025-08-23 12:41" pubdate>
+          August 23, 2025 pm
         </time>
       </span>
     
@@ -236,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          45 words
+          343 words
         
       </span>
     
@@ -247,7 +255,7 @@
         
         
         
-          1 mins
+          3 mins
         
       </span>
     
@@ -284,19 +292,22 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读</h1>
+            <h1 id="seo-header">Flow Matching 在具身智能 VLA 模型中的原理与实现（一）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-——-论文精读"><a href="#SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-——-论文精读" class="headerlink" title="SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读"></a>SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读</h1><h3 id="🔍项目链接：SG-Nav-Online-3D-Scene-Graph-Prompting-for-LLM-ba…"><a href="#🔍项目链接：SG-Nav-Online-3D-Scene-Graph-Prompting-for-LLM-ba…" class="headerlink" title="🔍项目链接：SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…"></a><em>🔍项目链接：<a target="_blank" rel="noopener" href="https://bagh2178.github.io/SG-Nav/">SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…</a></em></h3><h3 id="🔍论文链接：https-arxiv-org-pdf-2410-08189"><a href="#🔍论文链接：https-arxiv-org-pdf-2410-08189" class="headerlink" title="🔍论文链接：https://arxiv.org/pdf/2410.08189"></a><em>🔍论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2410.08189">https://arxiv.org/pdf/2410.08189</a></em></h3><h3 id="🔍李飞飞“空间智能”访谈链接：https-www-youtube-com-watch-v-PioN-CpOP0"><a href="#🔍李飞飞“空间智能”访谈链接：https-www-youtube-com-watch-v-PioN-CpOP0" class="headerlink" title="🔍李飞飞“空间智能”访谈链接：https://www.youtube.com/watch?v=_PioN-CpOP0"></a><em>🔍李飞飞“空间智能”访谈链接：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_PioN-CpOP0">https://www.youtube.com/watch?v=_PioN-CpOP0</a></em></h3><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-0.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
-<p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-1.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
-<p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-2.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
-<p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-3.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
-<p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-4.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
-<p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-5.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
-<p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-6.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
-<p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-7.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+                <p><strong>💡论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2210.02747">https://arxiv.org/pdf/2210.02747</a></strong><br><strong>💡MIT课程链接：<a target="_blank" rel="noopener" href="https://diffusion.csail.mit.edu/">Generative AI with Stochastic Differential Equatio…</a></strong><br>		<br>VLA（Vision–Language–Action）模型的核心任务是把来自视觉与语言的多模态条件信息，系统性地映射为<strong>连贯且可执行的动作或轨迹分布</strong>。要在高维连续动作空间中实现这一映射，既要保证生成过程的可控性与物理连贯性，又希望具备高效采样与可评估的概率性质。Flow matching 提供了一类满足这些要求的技术范式：通过直接参数化随时间变化的<strong>向量场</strong>（velocity field）并训练它去“匹配”将简单基准分布推送到目标数据分布的瞬时流，从而实现从条件到动作的<strong>平滑变换</strong>。</p>
+<p>将 Flow matching 引入具身智能的 VLA 框架，能够在理论上提供一种连贯且可解释的条件生成机制，并在实践上带来较快的确定性采样与较强的条件保持能力。但其实际性能高度依赖于条件融合策略、时间&#x2F;路径设计、数值求解与正则化手段的协同优化。下面的学习笔记，参考了FM论文、其他FM教程和MIT课程内容，并结合个人学习体会，总结而成。因段落内容较长，将分为四部分发布。</p>
+<p><img src="/images/Page_1_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_2_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_3_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_4_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_5_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_6_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_7_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_8_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/images/Page_9_docsmall.com.jpg" srcset="/img/loading.gif" lazyload alt=" "></p>
 
                 
               </div>
@@ -315,7 +326,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="category-chain-item">论文笔记</a>
+  <a href="/categories/%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="category-chain-item">教程笔记</a>
   
   
 
@@ -338,7 +349,21 @@
       
         <a href="/tags/VLM-%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B/" class="print-no-link">#VLM(视觉语言动作模型)</a>
       
-        <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="print-no-link">#论文笔记</a>
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="print-no-link">#学习路线</a>
+      
+        <a href="/tags/%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" class="print-no-link">#入门笔记</a>
+      
+        <a href="/tags/flow-matching%EF%BC%88%E6%B5%81%E5%8C%B9%E9%85%8D%EF%BC%89/" class="print-no-link">#flow matching（流匹配）</a>
+      
+        <a href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" class="print-no-link">#入门教程</a>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="print-no-link">#学习笔记</a>
+      
+        <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/" class="print-no-link">#扩散模型</a>
+      
+        <a href="/tags/diffusion/" class="print-no-link">#diffusion</a>
+      
+        <a href="/tags/AIGC/" class="print-no-link">#AIGC</a>
       
     </div>
   
@@ -350,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读</div>
-      <div>https://yuhengna.github.io/2025/08/21/VLA论文学习笔记-SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-——-论文精读/</div>
+      <div>Flow Matching 在具身智能 VLA 模型中的原理与实现（一）</div>
+      <div>https://yuhengna.github.io/2025/08/23/Flow-Matching-在具身智能-VLA-模型中的原理与实现（一）/</div>
     </div>
     <div class="license-meta">
       
@@ -363,7 +388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 21, 2025</div>
+          <div>August 23, 2025</div>
         </div>
       
       
@@ -395,18 +420,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/23/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="Flow Matching 在具身智能 VLA 模型中的原理与实现（一）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Flow Matching 在具身智能 VLA 模型中的原理与实现（一）</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/21/vla%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87-%CF%800%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="vla经典论文|π0论文学习笔记">
-                        <span class="hidden-mobile">vla经典论文|π0论文学习笔记</span>
+                      <a href="/2025/08/21/VLA%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-%E2%80%94%E2%80%94-%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读">
+                        <span class="hidden-mobile">VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
