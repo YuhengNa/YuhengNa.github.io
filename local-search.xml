@@ -8,9 +8,29 @@
     <link href="/2025/08/21/VLA%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-%E2%80%94%E2%80%94-%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/"/>
     <url>/2025/08/21/VLA%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-%E2%80%94%E2%80%94-%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-——-论文精读"><a href="#SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-——-论文精读" class="headerlink" title="SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读"></a>SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读</h1><h3 id="🔍项目链接：SG-Nav-Online-3D-Scene-Graph-Prompting-for-LLM-ba…"><a href="#🔍项目链接：SG-Nav-Online-3D-Scene-Graph-Prompting-for-LLM-ba…" class="headerlink" title="🔍项目链接：SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…"></a><em>🔍项目链接：<a href="https://bagh2178.github.io/SG-Nav/">SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…</a></em></h3><h3 id="🔍论文链接：https-arxiv-org-pdf-2410-08189"><a href="#🔍论文链接：https-arxiv-org-pdf-2410-08189" class="headerlink" title="🔍论文链接：https://arxiv.org/pdf/2410.08189"></a><em>🔍论文链接：<a href="https://arxiv.org/pdf/2410.08189">https://arxiv.org/pdf/2410.08189</a></em></h3><h3 id="🔍李飞飞“空间智能”访谈链接：https-www-youtube-com-watch-v-PioN-CpOP0"><a href="#🔍李飞飞“空间智能”访谈链接：https-www-youtube-com-watch-v-PioN-CpOP0" class="headerlink" title="🔍李飞飞“空间智能”访谈链接：https://www.youtube.com/watch?v=_PioN-CpOP0"></a><em>🔍李飞飞“空间智能”访谈链接：<a href="https://www.youtube.com/watch?v=_PioN-CpOP0">https://www.youtube.com/watch?v=_PioN-CpOP0</a></em></h3><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-0.jpg" alt=" "></p><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-1.jpg" alt=" "></p><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-2.jpg" alt=" "></p><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-3.jpg" alt=" "></p><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-4.jpg" alt=" "></p><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-5.jpg" alt=" "></p><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-6.jpg" alt=" "></p><p><img src="/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-7.jpg" alt=" "></p>]]></content>
     
     
+    <categories>
+      
+      <category>论文笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>论文笔记</tag>
+      
+    </tags>
     
   </entry>
   
