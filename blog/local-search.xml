@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/blog/2026/04/11/hello-world/"/>
+    <url>/blog/2026/04/11/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Flow Matching 在具身智能 VLA 模型中的原理与实现（二）</title>
+    <link href="/blog/2025/08/24/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <url>/blog/2025/08/24/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p><strong>💡论文链接：<a href="https://arxiv.org/pdf/2210.02747">https://arxiv.org/pdf/2210.02747</a></strong><br><strong>💡MIT课程链接：<a href="https://diffusion.csail.mit.edu/">Generative AI with Stochastic Differential Equatio…</a></strong><br><br>VLA（Vision–Language–Action）模型的核心任务是把来自视觉与语言的多模态条件信息，系统性地映射为<strong>连贯且可执行的动作或轨迹分布</strong>。要在高维连续动作空间中实现这一映射，既要保证生成过程的可控性与物理连贯性，又希望具备高效采样与可评估的概率性质。Flow matching 提供了一类满足这些要求的技术范式：通过直接参数化随时间变化的<strong>向量场</strong>（velocity field）并训练它去“匹配”将简单基准分布推送到目标数据分布的瞬时流，从而实现从条件到动作的<strong>平滑变换</strong>。</p><p>将 Flow matching 引入具身智能的 VLA 框架，能够在理论上提供一种连贯且可解释的条件生成机制，并在实践上带来较快的确定性采样与较强的条件保持能力。但其实际性能高度依赖于条件融合策略、时间&#x2F;路径设计、数值求解与正则化手段的协同优化。下面的学习笔记，参考了FM论文、其他FM教程和MIT课程内容，并结合个人学习体会，总结而成。因段落内容较长，将分为四部分发布。</p><p><img src="/blog/images/Page_1_docsmall.com1.jpg" alt=" "></p><p><img src="/blog/images/Page_2_docsmall.com1.jpg" alt=" "></p><p><img src="/blog/images/Page_3_docsmall.com1.jpg" alt=" "></p><p><img src="/blog/images/Page_4_docsmall.com1.jpg" alt=" "></p><p><img src="/blog/images/Page_5_docsmall.com1.jpg" alt=" "></p><p><img src="/blog/images/Page_6_docsmall.com1.jpg" alt=" "></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>学习路线</tag>
+      
+      <tag>入门笔记</tag>
+      
+      <tag>flow matching（流匹配）</tag>
+      
+      <tag>入门教程</tag>
+      
+      <tag>学习笔记</tag>
+      
+      <tag>扩散模型</tag>
+      
+      <tag>diffusion</tag>
+      
+      <tag>AIGC</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Flow Matching 在具身智能 VLA 模型中的原理与实现（一）</title>
+    <link href="/blog/2025/08/23/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <url>/blog/2025/08/23/Flow-Matching-%E5%9C%A8%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-VLA-%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p><strong>💡论文链接：<a href="https://arxiv.org/pdf/2210.02747">https://arxiv.org/pdf/2210.02747</a></strong><br><strong>💡MIT课程链接：<a href="https://diffusion.csail.mit.edu/">Generative AI with Stochastic Differential Equatio…</a></strong><br><br>VLA（Vision–Language–Action）模型的核心任务是把来自视觉与语言的多模态条件信息，系统性地映射为<strong>连贯且可执行的动作或轨迹分布</strong>。要在高维连续动作空间中实现这一映射，既要保证生成过程的可控性与物理连贯性，又希望具备高效采样与可评估的概率性质。Flow matching 提供了一类满足这些要求的技术范式：通过直接参数化随时间变化的<strong>向量场</strong>（velocity field）并训练它去“匹配”将简单基准分布推送到目标数据分布的瞬时流，从而实现从条件到动作的<strong>平滑变换</strong>。</p><p>将 Flow matching 引入具身智能的 VLA 框架，能够在理论上提供一种连贯且可解释的条件生成机制，并在实践上带来较快的确定性采样与较强的条件保持能力。但其实际性能高度依赖于条件融合策略、时间&#x2F;路径设计、数值求解与正则化手段的协同优化。下面的学习笔记，参考了FM论文、其他FM教程和MIT课程内容，并结合个人学习体会，总结而成。因段落内容较长，将分为四部分发布。</p><p><img src="/blog/images/Page_1_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_2_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_3_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_4_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_5_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_6_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_7_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_8_docsmall.com.jpg" alt=" "></p><p><img src="/blog/images/Page_9_docsmall.com.jpg" alt=" "></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>学习路线</tag>
+      
+      <tag>入门笔记</tag>
+      
+      <tag>flow matching（流匹配）</tag>
+      
+      <tag>入门教程</tag>
+      
+      <tag>学习笔记</tag>
+      
+      <tag>扩散模型</tag>
+      
+      <tag>diffusion</tag>
+      
+      <tag>AIGC</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VLA论文学习笔记|SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读</title>
+    <link href="/blog/2025/08/21/VLA%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-%E2%80%94%E2%80%94-%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/"/>
+    <url>/blog/2025/08/21/VLA%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-%E2%80%94%E2%80%94-%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-——-论文精读"><a href="#SG-Nav-Structured-Scene-Graph-with-Hierarchical-CoT-for-Zero-shot-ObjectNav-——-论文精读" class="headerlink" title="SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读"></a>SG-Nav: Structured Scene Graph with Hierarchical CoT for Zero-shot ObjectNav —— 论文精读</h1><h3 id="🔍项目链接：SG-Nav-Online-3D-Scene-Graph-Prompting-for-LLM-ba…"><a href="#🔍项目链接：SG-Nav-Online-3D-Scene-Graph-Prompting-for-LLM-ba…" class="headerlink" title="🔍项目链接：SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…"></a><em>🔍项目链接：<a href="https://bagh2178.github.io/SG-Nav/">SG-Nav: Online 3D Scene Graph Prompting for LLM-ba…</a></em></h3><h3 id="🔍论文链接：https-arxiv-org-pdf-2410-08189"><a href="#🔍论文链接：https-arxiv-org-pdf-2410-08189" class="headerlink" title="🔍论文链接：https://arxiv.org/pdf/2410.08189"></a><em>🔍论文链接：<a href="https://arxiv.org/pdf/2410.08189">https://arxiv.org/pdf/2410.08189</a></em></h3><h3 id="🔍李飞飞“空间智能”访谈链接：https-www-youtube-com-watch-v-PioN-CpOP0"><a href="#🔍李飞飞“空间智能”访谈链接：https-www-youtube-com-watch-v-PioN-CpOP0" class="headerlink" title="🔍李飞飞“空间智能”访谈链接：https://www.youtube.com/watch?v=_PioN-CpOP0"></a><em>🔍李飞飞“空间智能”访谈链接：<a href="https://www.youtube.com/watch?v=_PioN-CpOP0">https://www.youtube.com/watch?v=_PioN-CpOP0</a></em></h3><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-0.jpg" alt=" "></p><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-1.jpg" alt=" "></p><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-2.jpg" alt=" "></p><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-3.jpg" alt=" "></p><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-4.jpg" alt=" "></p><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-5.jpg" alt=" "></p><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-6.jpg" alt=" "></p><p><img src="/blog/images/SG-Nav%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0-%E5%9B%BE%E7%89%87-7.jpg" alt=" "></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>论文笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>论文笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vla经典论文|π0论文学习笔记</title>
+    <link href="/blog/2025/08/21/vla%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87-%CF%800%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/blog/2025/08/21/vla%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87-%CF%800%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="VLA经典论文分享｜《π0-A-Vision-Language-Action-Flow-Model-for-General-Robot-Control》"><a href="#VLA经典论文分享｜《π0-A-Vision-Language-Action-Flow-Model-for-General-Robot-Control》" class="headerlink" title="VLA经典论文分享｜《π0: A Vision-Language-Action Flow Model for General Robot Control》"></a>VLA经典论文分享｜《π0: A Vision-Language-Action Flow Model for General Robot Control》</h1><p>⭐论文链接：<a href="https://www.physicalintelligence.company/download/pi0.pdf">https://www.physicalintelligence.company/download/pi0.pdf</a><br>⭐项目主页：<a href="https://www.physicalintelligence.company/blog/pi0">Our First Generalist Policy</a><br>（相关链接）清华大学RDT：<a href="https://arxiv.org/abs/2410.07864">[2410.07864] RDT-1B: a Diffusion Foundation Model …</a></p><p>Physical Intelligence 公司推出的 π0模型，代表了通用机器人基础模型领域的一项重要进展。该模型旨在通过结合大规模预训练和创新的网络架构，赋予机器人处理复杂物理任务的能力，向着物理世界的通用智能迈出了坚实的一步。</p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_01.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_02.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_03.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_04.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_05.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_06.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_07.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_08.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_09.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_10.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_11.jpg" alt=" "></p><p><img src="/blog/images/%CF%800%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB_12.jpg" alt=" "></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>论文笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>论文笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VLA（视觉语言动作模型）入门学习路线(第一阶段)</title>
+    <link href="/blog/2025/08/21/VLA%EF%BC%88%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B%EF%BC%89%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    <url>/blog/2025/08/21/VLA%EF%BC%88%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B%EF%BC%89%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
+    
+    <content type="html"><![CDATA[<h1 id="具身智能-VLA（视觉语言动作模型）入门笔记"><a href="#具身智能-VLA（视觉语言动作模型）入门笔记" class="headerlink" title="具身智能|VLA（视觉语言动作模型）入门笔记"></a>具身智能|VLA（视觉语言动作模型）入门笔记</h1><h2 id="前言：关于Vision-Language-Action-Model"><a href="#前言：关于Vision-Language-Action-Model" class="headerlink" title="前言：关于Vision-Language-Action Model"></a>前言：关于Vision-Language-Action Model</h2><h3 id="入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》"><a href="#入门必读：《A-Survey-on-Vision-Language-Action-Models-for-Embodied-AI》" class="headerlink" title="入门必读：《A Survey on Vision-Language-Action Models for Embodied AI》"></a>入门必读：<a href="https://arxiv.org/pdf/2405.14093">《A Survey on Vision-Language-Action Models for Embodied AI》</a></h3><p>![ ](&#x2F;images&#x2F;vla survey.png)</p><p>Vision‑Language‑Action（VLA）模型通过融合视觉感知、语言理解与动作生成三大模块，实现了从自然语言指令到具体动作序列的端到端映射。在<strong>视觉模块</strong>中，预训练编码器（如 CLIP、DINOv2 或基于自监督的 MAE）负责提取环境中物体与场景的语义特征，而世界模型（如 Dreamer 系列）则进一步构建环境动态的内部表征，使得智能体能够在“想象–计划–执行”闭环中进行高效推理。<strong>语言模块</strong>通常依托大规模预训练语言模型（例如 PaLM‑E、EmbodiedGPT），通过链式思维或任务分解策略，将复杂指令细化为可执行的子任务。<strong>动作模块</strong>则采用从强化学习（PPO、DQN）到决策 Transformer（Decision Transformer、Gato）甚至扩散策略（Diffusion Policy）的多样化方法，以兼顾动作的精度与多样性。<br>尽管 VLA 模型在仿真环境下已展现出较为优秀的性能，但在真实场景中，<strong>数据稀缺与模型部署</strong>带来的效率与安全挑战依然突出。未来研究仍需探索自监督与仿真‑现实域自适应技术，以提升模型在多变环境中的泛化能力；同时，通过模型剪枝、早停推理或部分激活策略（如 TinyVLA 系列）来兼顾实时响应与资源受限设备的部署需求。此外，将<strong>安全约束与可解释机制</strong>融入动作生成流程，可为具身智能体的实际应用提供更可靠的保障。只有在理论创新与工程实践的双重驱动下，VLA 模型方能从“入门”迈向真正的“精通”与大规模应用。</p><h2 id="第一阶段：仿真环境安装与模仿学习流程"><a href="#第一阶段：仿真环境安装与模仿学习流程" class="headerlink" title="第一阶段：仿真环境安装与模仿学习流程"></a>第一阶段：仿真环境安装与模仿学习流程</h2><h3 id="🎯阶段目标"><a href="#🎯阶段目标" class="headerlink" title="🎯阶段目标"></a>🎯阶段目标</h3><p>完成以下三大核心工具的环境搭建与初步使用：</p><ul><li>Pytorch：深度学习框架</li><li>Isaac Lab：用于任务定义和训练的框架</li><li>RoboMimic：模仿学习库，支持行为克隆（BC）等策略</li></ul><h3 id="步骤一：Python-PyTorch-环境准备"><a href="#步骤一：Python-PyTorch-环境准备" class="headerlink" title="步骤一：Python + PyTorch 环境准备"></a>步骤一：Python + PyTorch 环境准备</h3><p><strong>🔧学习目标</strong></p><ul><li>掌握虚拟环境管理（以 Conda 为例）</li><li>成功安装 PyTorch 并具备 GPU 加速能力</li></ul><p><strong>🔧安装流程</strong><br>conda create -n robosim python&#x3D;3.10<br>conda activate robosim<br>pip install torch&#x3D;&#x3D;2.1.2+cu118 torchvision torchaudio –index-url <a href="https://download.pytorch.org/whl/cu118">https://download.pytorch.org/whl/cu118</a></p><p><strong>✅ 验证安装：</strong><br>import torch<br>print(torch.cuda.is_available())  # 应返回 True</p><p><strong>🔧推荐中文资源</strong><br>-<a href="https://www.bilibili.com/video/BV1wW411Y7ai?vd_source=95e18851d44f6a376e6cead040100a2b">Python3基础教程|莫烦</a><br>-<a href="https://pytorch.apachecn.org/">Pytorch中文网</a><br>-<a href="https://www.bilibili.com/video/BV1hE411t7RN?vd_source=95e18851d44f6a376e6cead040100a2b">B站小土堆|PyTorch深度学习快速入门教程</a></p><h3 id="步骤二：安装-Isaac-Lab（任务训练框架）"><a href="#步骤二：安装-Isaac-Lab（任务训练框架）" class="headerlink" title="步骤二：安装 Isaac Lab（任务训练框架）"></a>步骤二：安装 Isaac Lab（任务训练框架）</h3><p><strong>🔧学习目标：</strong></p><ul><li>克隆并成功运行 Isaac Lab 示例脚本</li><li>掌握仿真环境的创建与遥操作演示</li></ul><p><strong>🔧安装步骤</strong></p><ul><li><a href="https://www.bilibili.com/video/BV1wbURYWEod?vd_source=95e18851d44f6a376e6cead040100a2b">Isaac Lab保姆级安装教程</a></li></ul><p>git clone <a href="https://github.com/NVIDIA-Omniverse/IsaacLab.git">https://github.com/NVIDIA-Omniverse/IsaacLab.git</a><br>cd IsaacLab<br>.&#x2F;isaaclab.sh –install</p><p><strong>✅ 示例运行验证</strong><br>.&#x2F;isaaclab.sh -p source&#x2F;standalone&#x2F;create_empty.py</p><p><strong>🔧示例任务（键盘遥操作）</strong><br>.&#x2F;isaaclab.sh -p scripts&#x2F;environments&#x2F;teleoperation&#x2F;teleop_se3_agent.py <br>  –task Isaac-Lift-Cube-Franka-IK-Rel-v0 <br>  –teleop_device keyboard –num_envs 1</p><p><strong>🔧推荐中文资源</strong></p><ul><li><a href="https://blog.csdn.net/Clam_dw/article/details/145447273">Calm_dw 的 Isaac Lab 教程（CSDN）</a></li><li><a href="https://docs.robotsfan.com/isaaclab/">Isaac Lab 中文文档（社区翻译版</a></li></ul><h3 id="步骤三：安装与使用-RoboMimic（模仿学习）"><a href="#步骤三：安装与使用-RoboMimic（模仿学习）" class="headerlink" title="步骤三：安装与使用 RoboMimic（模仿学习）"></a>步骤三：安装与使用 RoboMimic（模仿学习）</h3><p><strong>🔧学习目标</strong></p><ul><li>了解 RoboMimic 支持的策略（BC&#x2F;BC-RNN等）</li><li>成功运行一个 BC 模型训练流程</li></ul><p><strong>🔧安装步骤</strong><br>git clone <a href="https://github.com/ARISE-Initiative/robomimic.git">https://github.com/ARISE-Initiative/robomimic.git</a><br>cd robomimic<br>pip install -e .</p><p><strong>🏗️ 启动训练示例</strong><br>python train.py –config exps&#x2F;templates&#x2F;bc.json –dataset datasets&#x2F;dataset.hdf5</p><p>训练模型和日志输出会保存在 output&#x2F; 目录下。</p><p><strong>🔧推荐资源</strong></p><ul><li><a href="https://blog.csdn.net/qq_28912651/article/details/142265735">CSDN 系列博客：《RoboMimic 基础教程》《RoboMimic 应用实战》</a></li></ul><h3 id="进阶推荐（模仿学习）"><a href="#进阶推荐（模仿学习）" class="headerlink" title="进阶推荐（模仿学习）"></a>进阶推荐（模仿学习）</h3><p>  <a href="https://www.bilibili.com/video/BV1xGF3eeEjB?vd_source=95e18851d44f6a376e6cead040100a2b">ACT&#x2F;ALOHA原理精析</a></p><p>🔧 ACT</p><ul><li>GitHub：github.com&#x2F;tonyzhaozh&#x2F;act</li></ul><p>🔧ALOHA </p><ul><li>项目主页：tonyzhaozh.github.io&#x2F;aloha</li><li>GitHub：github.com&#x2F;tonyzhaozh&#x2F;aloha<br><em>ALOHA 是一个低成本双臂机器人系统，ACT 是其搭配的动作分块模仿学习策略，支持长时序任务执行。</em></li></ul><h3 id="🧩进阶推荐（Diffusion）"><a href="#🧩进阶推荐（Diffusion）" class="headerlink" title="🧩进阶推荐（Diffusion）"></a>🧩进阶推荐（Diffusion）</h3><ol><li>Diffusion Policy</li></ol><ul><li>📘 GitHub：github.com&#x2F;real-stanford&#x2F;diffusion_policy</li><li>📄 论文：arxiv.org&#x2F;abs&#x2F;2303.04137<br><em>哥伦比亚大学与丰田研究院提出，适合高维动作控制任务的扩散策略方法。</em></li></ul><ol start="2"><li>3D Diffusion Policy (DP3)</li></ol><ul><li>📘 GitHub：github.com&#x2F;YanjieZe&#x2F;3D-Diffusion-Policy</li><li>🌐 项目主页：dp3.cs.columbia.edu<br><em>DP3 将 3D 视觉与扩散策略结合，提升了三维任务中的泛化与控制能力。</em></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>学习路线</tag>
+      
+      <tag>入门笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型</title>
+    <link href="/blog/2025/08/20/VLA%E5%89%8D%E6%B2%BF%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%EF%BD%9C%E5%A4%A9%E5%A4%A7%EF%BC%86%E6%B8%85%E5%8D%8E%E6%9C%80%E6%96%B0%E6%88%90%E6%9E%9C%EF%BC%81GeoVLA%E2%80%94%E2%80%94%E5%85%B7%E5%A4%873D%E5%87%A0%E4%BD%95%E7%A9%BA%E9%97%B4%E6%84%9F%E7%9F%A5%E7%9A%84VLA%E6%A8%A1%E5%9E%8B/"/>
+    <url>/blog/2025/08/20/VLA%E5%89%8D%E6%B2%BF%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%EF%BD%9C%E5%A4%A9%E5%A4%A7%EF%BC%86%E6%B8%85%E5%8D%8E%E6%9C%80%E6%96%B0%E6%88%90%E6%9E%9C%EF%BC%81GeoVLA%E2%80%94%E2%80%94%E5%85%B7%E5%A4%873D%E5%87%A0%E4%BD%95%E7%A9%BA%E9%97%B4%E6%84%9F%E7%9F%A5%E7%9A%84VLA%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型"><a href="#VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型" class="headerlink" title="VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型"></a><strong>VLA前沿论文分享｜天大＆清华最新成果！GeoVLA——具备3D几何空间感知的VLA模型</strong></h1><h2 id="⼀、前⾔：2D-VLA-的限制与-3D-VLA-的潜⼒"><a href="#⼀、前⾔：2D-VLA-的限制与-3D-VLA-的潜⼒" class="headerlink" title="⼀、前⾔：2D VLA 的限制与 3D VLA 的潜⼒"></a><strong>⼀、前⾔：2D VLA 的限制与 3D VLA 的潜⼒</strong></h2><p>• 论⽂链接：<a href="https://arxiv.org/pdf/2508.09071">https://arxiv.org/pdf/2508.09071</a><br>• 项⽬链接：<a href="https://linsun449.github.io/GeoVLA/">https://linsun449.github.io/GeoVLA/</a></p><p><img src="/blog/images/geo1.jpg" alt=" "></p><p>近年来，<strong>VLA模型</strong>逐渐成为机器⼈领域的研究热点。其⽬标是让机器⼈能够“看懂”视觉信息、“理解”⾃然语⾔指令，并进⼀步“执⾏”相应动作。这类⽅法的典型代表包括 RT-2、OpenVLA、pi0、CogACT 等，它们通常建⽴在VLM基础上，通过额外的动作⽣成头(action head)实现从指令到动作的映射。然⽽，现有主流 VLA <strong>⾼度依赖 2D RGB 输⼊</strong>，⽽忽略了物理世界中丰富的 <strong>3D⼏何先验</strong>。这种限制带来了⼏个核⼼问题：</p><p>• <strong>深度模糊</strong>：仅依赖 2D 图像时，机器⼈难以准确判断⽬标与⾃⾝的相对空间位置。<br>• <strong>尺度不变性差</strong>：同样的指令，在不同⼤⼩物体前可能执⾏失败。<br>• <strong>视⻆敏感</strong>：当相机位置变化时，2D-only VLA 很容易丧失泛化能⼒。</p><p>已有⼀些⼯作尝试在 VLM 端注⼊ 3D 表征，例如 SpatialVLA（引⼊空间位置编码）、LLaVA-3D（为⼤模型加⼊ 3D 感知通道）。但这些⽅法往往破坏了视觉编码器与语⾔模型的对⻬，导致需要庞⼤的 3D instruction-tuning 数据集来恢复性能，代价⾼昂。另⼀些⽅法选择在 动作专家 (action expert) 部分引⼊ 3D 信息，例如 PointVLA 利⽤ ControlNet ⻛格模块将点云特征注⼊，但由于冻结了动作专家，导致模型难以充分适应新的 3D 模态。</p><p><strong>⽽GeoVLA 的提出，正是为了解决这个⽭盾⸺如何在保持 VLM 知识对⻬的同时，有效地将 3D 信息融⼊动作⽣成过程</strong>？ \</p><p>接下来，本⽂将带你精读GeoVLA⽂献，解析⼯作原理与技术细节！</p><h2 id="⼆、GeoVLA⽅法设计与模型架构"><a href="#⼆、GeoVLA⽅法设计与模型架构" class="headerlink" title="⼆、GeoVLA⽅法设计与模型架构"></a><strong>⼆、GeoVLA⽅法设计与模型架构</strong></h2><p>GeoVLA 提出了⼀个<strong>双路径 + 融合</strong>的优雅框架：<br>• <strong>双路径</strong>：视觉-语⾔模态 (VLM) 与 3D 点云模态 (PEN) 各⾃独⽴编码。<br>• <strong>融合</strong>：通过 3D-enhanced Action Expert (3DAE) 将两类特征结合，⽣成连续动作序列。</p><p>GeoVLA 的总体思路可以⽤⼀句话概括：“2D 看懂世界，3D 感知空间，两者在动作专家 (Action Expert) 中融合，最终输出空间感知的连续动作。”</p><h3 id="１-双路径总体架构"><a href="#１-双路径总体架构" class="headerlink" title="１.双路径总体架构"></a>１.双路径总体架构</h3><p><img src="/blog/images/geof2.jpg" alt=" "><br>输⼊包括：视觉观测V（RGB 图像）、指令L（语⾔指令）、深度图D（由 RGB-D 相机获取）。</p><p>•视觉-语⾔路径 (VLM)：采⽤预训练的 VLM (Prismatic-7B)，对 $(V, L)$ 编码，得到 $\mathcal{F}<em>{VL}$ 。这部分保留了⼤模型在语义理解上的强⼤能⼒。<br>•几何路径 (PEN)：由深度图 $$D$$ 投影得到点云 $$P$$，再通过 Point Embedding Network (PEN) 编码为$$ \mathcal{F}</em>{P}$$，提供局部且结构化的 3D 特征<br>•3DAE 融合分支：将 $$\mathcal{F}<em>{VL}$$与 $$\mathcal{F}</em>{P}$$拼接输入到 3D-enhanced Action Expert (3DAE)。3DAE 基于扩散模型 (Diffusion Transformer)，逐步生成动作序列：<br>   $$a_{1:T} \sim p(a_{1:T} \mid V, L)$$<br>其中，每个动作 $$a_t$$ 由平移、旋转和夹爪控制构成：<br>    $$a_t &#x3D; (\Delta x, \Delta y, \Delta z, \Delta \alpha, \Delta \beta, \Delta \gamma, g)$$<br>这里 $$(\Delta x, \Delta y, \Delta z)$$ 表示相对位移，$(\Delta \alpha, \Delta \beta, \Delta \gamma)$ 表示旋转角度，$$g$$表示夹爪开合。</p><h3 id="２-Point-Embedding-Network-PEN"><a href="#２-Point-Embedding-Network-PEN" class="headerlink" title="２. Point Embedding Network (PEN)"></a>２. Point Embedding Network (PEN)</h3><p><img src="/blog/images/geo3.jpg" alt=" "><br>  PEN 的关键作用是：<strong>从噪声较大的点云中提取紧凑且与操作相关的几何特征</strong>。同样采用 <strong>双路径</strong>架构：<br>    - <strong>几何特征路径</strong>：<br>      - 使用大卷积核 CNN + pooling 将点云编码为 patch-level 几何 token$$F_{pc}$$。<br>      - Transformer 进一步建模全局上下文信息。<br>    - <strong>位置编码路径</strong>：<br>      - 将点云下采样，使其与 $$F_{pc}$$ 对齐。<br>      - 使用 RoPE (Rotary Positional Embedding) 引入 3D 空间位置信息。</p><p>  <strong>Anchor Token 机制</strong>：<br>    - 选取点云坐标原点（即末端执行器位置）对应的 token 作为$$F_{anchor}$$。<br>    - 最终仅保留更新后的 anchor token，作为几何特征 $$\mathcal{F}_{P}$$。</p><p>  这种设计有两个好处：<br>    1. <strong>任务相关性</strong>：关注与末端执行器直接相关的空间关系，避免无关冗余点的干扰。<br>    2. <strong>空间建模</strong>：捕捉物体与末端之间的关键几何关系，提升接触预测与操作精度。</p><p><em>类比理解：如果点云是一张“3D 地图”，那么 anchor token 就是以“机器人的手”为中心的局部坐标。这样机器人在做决策时，始终优先考虑“我手在这里、物体在这里”的关系，而不是被无关的背景点干扰。</em></p><h3 id="３-3D-enhanced-Action-Expert-3DAE-：模态融合与扩散动作生成"><a href="#３-3D-enhanced-Action-Expert-3DAE-：模态融合与扩散动作生成" class="headerlink" title="３. 3D-enhanced Action Expert (3DAE)：模态融合与扩散动作生成"></a>３. 3D-enhanced Action Expert (3DAE)：模态融合与扩散动作生成</h3><pre><code class="hljs">为保证动作轨迹的连续性与物理可行性，GeoVLA 的动作生成采用 Diffusion Transformer(DiT)：- 训练时：将真实动作序列逐步加入噪声，模型学习如何去噪恢复。- 推理时：从随机噪声动作出发，逐步去噪生成最终动作。</code></pre><p>  关键创新在于 <strong>模态融合方式</strong>：在 DiT 的前馈层中，引入 <strong>Mixture-of-Experts (MoE)</strong> 架构。每个 expert 只处理一种模态（视觉-语言 &#x2F; 几何）。采用 <strong>静态路由</strong>：根据输入模态固定专家分配，而非动态权重。<br>  为什么要用静态路由？因为如果用动态路由，模型往往偏向强大的 VLM 分支，<strong>点云信息被“忽视”</strong>。 静态路由 + 随机模态丢弃，使模型在训练中被迫<strong>均衡利用两类信息</strong>。</p><p>  公式化表示：假设  $$\mathcal{F}<em>{VL}$$ 和  $$\mathcal{F}</em>{P}$$ 分别为两种模态特征，则 3DAE 的生成过程为：</p><p>  $$ a_{1:T} &#x3D; \text{DiT}\big(\text{Concat}(\mathcal{F}<em>{VL}, \mathcal{F}</em>{P}), \epsilon\big)$$</p><p>  其中 $$\epsilon$$ 表示逐步去噪过程中的高斯噪声。MoE 确保$$\mathcal{F}<em>{VL}$$与  $$\mathcal{F}</em>{P}$$ 在 Transformer 层中得到等价建模，而不会一方“压制”另一方。</p><h3 id="方法设计小结"><a href="#方法设计小结" class="headerlink" title="方法设计小结"></a><em>方法设计小结</em></h3><pre><code class="hljs">*GeoVLA 的设计思路可以总结为三点：年初开始  1. 双路径输入：不破坏 VLM，对 3D 点云独立建模；  2.PEN：以末端执行器为 anchor，提炼与操作高度相关的几何特征；  3.3DAE：基于扩散的 MoE 动作专家，保证模态融合的平衡性与鲁棒性。相较于之前的方法（直接往 VLM 加 3D embedding / ControlNet 注入点云），GeoVLA 的优势在于：  - 保持 VLM 语义对齐，不需要大规模 3D instruction-tuning；  - 端到端融合 3D 表征，不冻结 action head，能充分适配几何信息*</code></pre><h2 id="三、实验部分"><a href="#三、实验部分" class="headerlink" title="三、实验部分"></a>三、实验部分</h2><p>为了验证 GeoVLA 的有效性，作者从sim和real两个层面进行了评估。这样可以回答两个核心问题：</p><p>  1.在受控环境中，GeoVLA 是否能超过benchmark？<br>  2.在真实场景中，GeoVLA 是否具有良好的robustness和generalization？</p><h3 id="1-仿真实验"><a href="#1-仿真实验" class="headerlink" title="1. 仿真实验"></a>1. 仿真实验</h3><p><img src="/blog/images/geo4.jpg" alt=" "></p><p>  实验环境主要包括：<br>    - <strong>LIBERO 基准</strong>：涵盖长时序任务、语义指令多样性，适合考察语言-动作对齐。<br>    - <strong>ManiSkill2</strong>：包含复杂物体操作与 3D 几何挑战，适合评估空间推理能力。</p><p>  对比基线：<br>    - <strong>OpenVLA</strong>（纯 2D VLA）<br>    - <strong>CogACT</strong>（引入 Action Transformer）<br>    - <strong>π0</strong>（系统化 VLA 框架）<br>    - <strong>PointVLA</strong>（3DVLA，在 ControlNet 端引入点云）</p><p><img src="/blog/images/geo5.jpg" alt=" "></p><p>  <strong>结果</strong>：在长时序任务（如堆叠方块、开关门）中，GeoVLA 成功率显著高于 2D-only 模型。在几何复杂任务（如插入、遮盖）中，GeoVLA 明显优于 PointVLA。证明了<strong>PEN + 3DAE 的端到端设计比单纯注入点云更高效。</strong></p><h3 id="2-消融实验"><a href="#2-消融实验" class="headerlink" title="2. 消融实验"></a>2. 消融实验</h3><p>为了验证设计的必要性，作者进行了系统的 <strong>ablation study</strong>。<br><img src="/blog/images/geo6.jpg" alt=" "></p><h4 id="2-1-点云编码对比："><a href="#2-1-点云编码对比：" class="headerlink" title="2.1 点云编码对比："></a>2.1 点云编码对比：</h4><p>  用 MLP 或 PointNet 替代 PEN，性能明显下降。<strong>这说明：PEN 在几何建模和 anchor token 选择上更优。</strong><br>      2.2 Anchor Token 策略：<br>  选择 end-effector 作为 anchor token 表现最佳。如果换成随机点或物体中心，成功率下降。<strong>这说明：操作确实依赖“手-物体”相对关系，而不是全局无差别建模。</strong></p><h4 id="2-3-RoPE-引入："><a href="#2-3-RoPE-引入：" class="headerlink" title="2.3 RoPE 引入："></a>2.3 RoPE 引入：</h4><p>  不加 RoPE 的 PEN，空间结构捕捉能力减弱，操作精度下降。<strong>这说明：RoPE 提供了旋转不变性，使模型在视角变化下更稳健。</strong></p><h4 id="2-4-MoE-路由机制："><a href="#2-4-MoE-路由机制：" class="headerlink" title="2.4 MoE 路由机制："></a>2.4 MoE 路由机制：</h4><p>  静态路由优于动态路由。动态路由倾向依赖 VLM 分支，导致点云特征贡献下降。<strong>静态路由 + 模态 dropout 保证了模态平衡。</strong><br><strong>结论：每个设计（PEN、Anchor、RoPE、MoE 静态路由）都发挥了独立作用，缺一不可。</strong></p><h3 id="3-真机实验"><a href="#3-真机实验" class="headerlink" title="3.  真机实验"></a>3.  真机实验</h3><p><img src="/blog/images/geo7.jpg" alt=" "><br>  实验平台：搭载 Intel RealSense D435i RGB-D 相机的WidowX-250s 六自由度机械臂，测试任务包含<strong>基础操作与3D挑战任务</strong>（高度变化、尺度变化、相机视角偏移）</p><p><img src="/blog/images/geo8.jpg" alt=" "></p><p>  <strong>任务示例：</strong><br>    - <strong>Pick and Place</strong>：抓取并放置方块。<br>    - <strong>Stack Blocks</strong>：在已有方块上叠放另一个。<br>    - <strong>Put Basketball</strong>：将小篮球放进篮筐。<br>    - <strong>Cover Matryoshka</strong>：将套娃盖到另一物体上。</p><p><img src="/blog/images/geo9.jpg" alt=" "><br><img src="/blog/images/geo10.jpg" alt=" "></p><p>  结论：在常规任务中，GeoVLA 与基线差距不大；但在 <strong>涉及高度变化、尺度变化、相机视角偏移</strong>的任务中，<strong>GeoVLA 成功率显著高于基线</strong>。例如：在 “Put Basketball” 任务中，GeoVLA 即使篮筐比训练时高 5cm，仍能完成；在 “Cover Matryoshka” 中，GeoVLA 能适应不同大小的套娃，而 OpenVLA 常常夹空或偏移。</p><p>  <strong>类比理解：基线方法像是“死记硬背动作剧本”，一旦场景变化就手忙脚乱；GeoVLA 更像是“真正理解了空间关系”，即使场景更换也能举一反三。</strong></p><h2 id="四、结论分析与个人理解（并非准确）"><a href="#四、结论分析与个人理解（并非准确）" class="headerlink" title="四、结论分析与个人理解（并非准确）"></a>四、结论分析与个人理解（并非准确）</h2><p>GeoVLA 在论文中提出并系统验证了 “在保留 VLM 语义对齐的前提下，把 3D 几何信息端到端地注入动作生成”的路径。作者通过两条并行通道（VLM 与 PEN）以及一个以DiF为核心并内嵌 MoE 的3D增强动作专家（3DAE），展示了将点云信息用于真实操纵任务时既能保持预训练知识又能显著增强空间感知的可行性与效用。</p><p>论文的实验结果（sim &amp; real），证明了：在多项基准和变体条件下，GeoVLA 在高度、尺度与视角变化下均表现出比 2D-only 或简单注入式方法更高的成功率与更稳定的泛化能力。正是这种“在动作生成端做有意识的模态平衡，而不是强行改写 VLM 表征”的设计思路，使得 GeoVLA 在复杂操作场景下获得了可观的经验增益 。</p><p>从技术角度看，GeoVLA 的设计既直接解决了工程问题，也有明确的理论价值。PEN 通过以末端执行器为锚点（anchor token）来聚焦点云信息，这等于把注意力机制约束到与操作最相关的局部几何，从而显著降低背景噪声和数据冗余对决策的影响；同时，采用 RoPE 这种旋转&#x2F;位置信息的编码方式，有助于在不同视角或相机摆放变化下保持几何关系的可迁移性。action head采用DiT的连续动作生成范式，则天然匹配机械臂动作的轨迹连续性与物理可行性；在这个基础上引入 MoE 并使用静态路由（配合模态丢弃训练）是一种务实的折中，既避免了强制学习复杂的模态对齐策略导致对 VLM 的过度依赖，又保证了点云和视觉信息在决策过程中能发挥各自专长，从而实现更可靠的模态协同。</p><p>当然，GeoVLA 也并非完美，其设计与实验揭示了一些需被重视的局限与未来改进方向：</p><p>首先，方法依赖高质量的深度&#x2F;点云观测——在深度缺失、严重遮挡或低信噪比的场景下，PEN 的输入质量会直接限制下游动作的可靠性。其次，论文当前实现中 PEN 与 3DAE 多为从头训练，而 VLM 采用预训练权重，这带来了较高的训练成本与对大规模算力的需求，并且在数据稀缺时点云分支的学习效率仍有提升空间。此外，真实实验主要在特定的第三人称 RealSense + WidowX 平台上进行，如何把该方法稳健地迁移到腕视、双臂或更复杂动力学平台、以及在更开放的家庭场景中部署，仍需额外工作来验证和改进（比如更强的传感器融合、鲁棒策略与online-自适应机制）。</p><p>论文报告的具体数值也揭示了这一点：在仿真基准上 GeoVLA 达到了很高的平均成功率（如 LIBERO 平均 97.7%），在真实任务集上的平均成功率约为 86.3%，表明方法已显著提高现实可用性，但仍有边界情形需要进一步攻克 。</p><p>由此，可以延申出一些富有潜力的后续研究方向：第一是通过自监督或跨模态预训练来提升 PEN 的初始表示能力，使点云分支不再完全依赖从零训练；第二是探索更柔性的路由与正则化（例如受约束的动态路由或模态显著性损失），使模型在保持模态平衡的同时能在复杂输入下自动调整专家权重；第三是将时间序列的几何记忆（短期轨迹历史或多视角融合）纳入 PEN&#x2F;3DAE，以增强对动态目标与瞬时遮挡的鲁棒性；第四是引入不确定性估计与安全约束，使输出动作在失败概率上可以被上层规划器或安全控制策略显式管理。</p><p>总的来说，GeoVLA 为 VLA 领域提供了一条新的研究思路：在不破坏既有 VLM 语义能力的前提下，通过端到端可训练的几何分支，在动作生成端做结构化融合，能够在“需要精确空间感知”的机器人操控任务上取得量化且可解释的进步。对于研究者，GeoVLA 同时提出了有价值的开放问题——如何在更少监督、更低算力、更多样化的场景下，保留或放大当前方法带来的空间理解收益。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>论文笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VLA(视觉语言动作)</tag>
+      
+      <tag>具身智能</tag>
+      
+      <tag>多模态大模型</tag>
+      
+      <tag>VLM(视觉语言动作模型)</tag>
+      
+      <tag>论文笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>

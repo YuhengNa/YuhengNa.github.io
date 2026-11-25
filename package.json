@@ -1,0 +1,13 @@
+{
+  "name": "yuheng-na-academic-homepage",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A bilingual academic homepage for Yuheng Na.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs && node scripts/check-blog.mjs",
+    "dev": "node scripts/serve.mjs"
+  },
+  "engines": { "node": ">=22" }
+}

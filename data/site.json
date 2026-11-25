@@ -1,0 +1,152 @@
+{
+  "site": {
+    "url": "https://yuhengna.github.io/",
+    "updated": "2026-11",
+    "description": {
+      "en": "Yuheng Na's academic homepage. Research in embodied AI, robot learning, and loco-manipulation.",
+      "zh": "纳昱恒的学术个人主页，关注具身智能、机器人学习与移动操作。"
+    }
+  },
+  "profile": {
+    "name": "Yuheng Na",
+    "chineseName": "纳昱恒",
+    "portrait": "assets/portrait.jpg",
+    "email": "nayuheng@stu.xjtu.edu.cn",
+    "github": "https://github.com/YuhengNa",
+    "blog": "https://yuhengna.github.io/blog/",
+    "scholar": "https://scholar.google.com/citations?user=2R2bdiUAAAAJ&hl=en",
+    "wechatQr": "assets/wechat-qr.jpg",
+    "xiaohongshuQr": "assets/xiaohongshu-qr.jpg",
+    "cv": "",
+    "location": { "en": "Xi’an, China", "zh": "中国 · 西安" },
+    "role": { "en": "Embodied AI & Robot Learning", "zh": "具身智能与机器人学习" },
+    "about": {
+      "en": [
+        "I am Yuheng Na, a final-year undergraduate at Xi’an Jiaotong University, a co-founder of the Xbotics Embodied AI Community, and an incoming fully funded Ph.D. student at HKUST (Guangzhou), starting in 2027 under the supervision of Prof. Haoang Li. My research focuses on embodied AI, particularly embodied foundation models (VLA/WAM), dexterous manipulation, and humanoid and quadrupedal loco-manipulation.",
+        "I have authored several papers as first or co-first author and led the development of open-source projects. Representative work includes EvoMem-VLA, EgoLoAF, and DoggyClawAssistant. During my undergraduate studies, I have participated in multiple robotics competitions and received awards, gaining hands-on experience in model training, motion control, system integration, and deployment on physical robots.",
+        "In community building and open-source education, I co-founded the Xbotics Embodied AI Community and co-led the development of Xbotics Embodied AI in 21 Lectures and the Xbotics Embodied Guide. These resources provide a structured introduction to embodied AI, combining foundational knowledge with practical tutorials. The associated GitHub repositories have received over 2,000 stars in total."
+      ],
+      "zh": [
+        "我是纳昱恒，西安交通大学大四本科生，同时也是Xbotics 具身智能社区联合创始人，香港科技大学（广州）2027 级全奖直博（师从李昊昂教授）。研究聚焦具身智能，主要方向包括具身策略基础模型（VLA/WAM）、灵巧操作，以及人形与四足机器人移动操作。",
+        "已形成多项一作（含共一）论文，并主导开源项目开发，代表性工作包括 EvoMem-VLA、EgoLoAF 和 DoggyClawAssistant等。本科期间多次参与机器人竞赛并获奖，具备从模型训练、运动控制到系统集成与真机部署的实践经验。",
+        "在社区与开源建设方面，联合成立Xbotics具身智能社区，共同牵头编写《Xbotics 具身智能 21 讲》与《Xbotics Embodied Guide》，系统组织具身智能入门知识与实践教程，相关 GitHub 仓库累计获得 2k+ Stars。"
+      ]
+    }
+  },
+  "research": [
+    { "en": "Embodied foundation models · VLA / WAM", "zh": "具身基础策略模型 · VLA / WAM" },
+    { "en": "Dexterous manipulation", "zh": "灵巧操作" },
+    { "en": "Humanoid & quadrupedal loco-manipulation", "zh": "人形与四足机器人移动操作" }
+  ],
+  "news": [
+    {
+      "date": "2026.11",
+      "text": { "en": "🚀 Our EgoLoAF preprint is now available!", "zh": "🚀 EgoLoAF 预印本已发布！" },
+      "linkLabel": { "en": "Paper", "zh": "论文" },
+      "url": "https://arxiv.org/abs/2611.32260"
+    },
+    {
+      "date": "2026.10",
+      "text": { "en": "🚀 Our EvoMem-VLA preprint is now available!", "zh": "🚀 EvoMem-VLA 预印本已发布！" },
+      "linkLabel": { "en": "Paper", "zh": "论文" },
+      "url": "https://arxiv.org/abs/2610.05418"
+    },
+    {
+      "date": "2026.04",
+      "text": { "en": "🚀 The DoggyClawAssistant project code is now open source!", "zh": "🚀 DoggyClawAssistant 项目代码已开源！" },
+      "linkLabel": { "en": "Code", "zh": "代码" },
+      "url": "https://github.com/YuhengNa/DoggyClawAssistant"
+    }
+  ],
+  "publications": [
+    {
+      "id": "egoloaf",
+      "shortName": "EgoLoAF",
+      "title": "EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand–Object Affordances",
+      "year": "2026",
+      "image": "assets/egoloaf-fig1.webp",
+      "imageWidth": 1892,
+      "imageHeight": 1368,
+      "role": { "en": "Co-first author · Project lead", "zh": "共同第一作者 · 项目负责人" },
+      "summary": { "en": "Humanoid loco-manipulation from egocentric human demonstrations.", "zh": "从第一视角人类示范中学习人形机器人的移动操作。" },
+      "links": [{ "label": { "en": "Paper", "zh": "论文" }, "url": "https://arxiv.org/pdf/2611.32260" }]
+    },
+    {
+      "id": "evomem-vla",
+      "shortName": "EvoMem-VLA",
+      "title": "EvoMem-VLA: State-Evolution Memory for Long-Horizon Robot Manipulation",
+      "year": "2026",
+      "image": "assets/evomem-vla-fig1.webp",
+      "imageWidth": 1892,
+      "imageHeight": 1252,
+      "role": { "en": "First author", "zh": "第一作者" },
+      "summary": { "en": "State-evolution memory for long-horizon robot manipulation.", "zh": "面向长时程机器人操作的状态演化记忆。" },
+      "links": [{ "label": { "en": "Paper", "zh": "论文" }, "url": "https://arxiv.org/abs/2610.05418" }]
+    }
+  ],
+  "projects": [
+    {
+      "name": "DoggyClawAssistant",
+      "role": { "en": "Project lead", "zh": "项目负责人" },
+      "description": { "en": "An embodied agent system for a quadrupedal robot with dual-arm manipulation.", "zh": "四足双臂移动操作机器人智能体系统。" },
+      "links": [{ "label": { "en": "GitHub", "zh": "GitHub" }, "url": "https://github.com/YuhengNa/DoggyClawAssistant" }]
+    },
+    {
+      "name": "Xbotics Embodied Guide",
+      "role": { "en": "Core contributor", "zh": "核心贡献者" },
+      "description": { "en": "An open learning guide connecting embodied AI foundations with hands-on practice.", "zh": "连接具身智能理论基础与动手实践的开源入门指南。" },
+      "links": [{ "label": { "en": "GitHub", "zh": "GitHub" }, "url": "https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-Guide" }]
+    },
+    {
+      "name": "Xbotics 具身智能 21 讲",
+      "role": { "en": "Co-initiator · Core author", "zh": "共同发起人 · 核心作者" },
+      "description": { "en": "A structured introduction to embodied AI, developed with the Xbotics community.", "zh": "与 Xbotics 社区共同建设的具身智能系统化入门教程。" },
+      "links": [{ "label": { "en": "Community", "zh": "社区" }, "url": "https://xbotics-embodied.site/about" }]
+    }
+  ],
+  "education": [
+    {
+      "date": { "en": "Starting Sep. 2027", "zh": "2027.09 入学" },
+      "organization": { "en": "HKUST (Guangzhou)", "zh": "香港科技大学（广州）" },
+      "position": { "en": "Incoming Ph.D. student · Robotics and Autonomous Systems", "zh": "2027 级全奖直博生 · 机器人与自主系统" },
+      "detail": { "en": "Advisor: Prof. Haoang Li", "zh": "导师：李昊昂教授" }
+    },
+    {
+      "date": { "en": "Sep. 2023 – Jun. 2027", "zh": "2023.09—2027.06" },
+      "organization": { "en": "Xi’an Jiaotong University", "zh": "西安交通大学" },
+      "position": { "en": "Undergraduate · Mechanical Engineering", "zh": "本科 · 机械工程" },
+      "detail": { "en": "Final-year student", "zh": "2023 级，大四在读" }
+    }
+  ],
+  "experience": [
+    {
+      "date": { "en": "Oct. 2026 – Present", "zh": "2026.10—至今" },
+      "organization": { "en": "光之跃迁", "zh": "光之跃迁" },
+      "position": { "en": "VLA Team Lead", "zh": "VLA 团队负责人" },
+      "detail": { "en": "", "zh": "" }
+    },
+    {
+      "date": { "en": "Apr. – Oct. 2026", "zh": "2026.04—2026.10" },
+      "organization": { "en": "HKUST (Guangzhou)", "zh": "香港科技大学（广州）" },
+      "position": { "en": "Research Intern", "zh": "研究实习生" },
+      "detail": { "en": "Advised by Prof. Haoang Li", "zh": "导师：李昊昂教授" }
+    },
+    {
+      "date": { "en": "Jul. 2025 – Present", "zh": "2025.07—至今" },
+      "organization": { "en": "Xbotics Embodied AI Community", "zh": "Xbotics 具身智能社区" },
+      "position": { "en": "Co-founder & Research Team Lead", "zh": "联合创始人兼研究团队负责人" },
+      "detail": { "en": "", "zh": "" }
+    },
+    {
+      "date": { "en": "Aug. 2025 – Jan. 2026", "zh": "2025.08—2026.01" },
+      "organization": { "en": "IAIR, Xi’an Jiaotong University", "zh": "西安交通大学人工智能与机器人研究所（IAIR）" },
+      "position": { "en": "Algorithm Intern", "zh": "算法实习生" },
+      "detail": { "en": "Advised by Academician Nanning Zheng", "zh": "导师：郑南宁院士" }
+    }
+  ],
+  "honors": [
+    { "year": "2025", "title": { "en": "Inspired Award", "zh": "Inspired Award" }, "context": { "en": "VEX Robotics World Championship, Dallas", "zh": "VEX 美国达拉斯世锦赛" } },
+    { "year": "2025", "title": { "en": "Provincial First Prize", "zh": "省级一等奖" }, "context": { "en": "RoboCup Underwater Robotics", "zh": "RoboCup 水下机器人赛项" } },
+    { "year": "2024", "title": { "en": "Excellence Award · 1/39", "zh": "Excellence Award · 1/39" }, "context": { "en": "VEX National Elite Competition", "zh": "VEX 机器人全国精英赛" } }
+  ]
+}
